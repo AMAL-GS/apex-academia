@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_apex_academia/StudentAttendence.dart';
 import 'package:flutter_apex_academia/assignmentChecking.dart';
 import 'package:flutter_apex_academia/notification.dart';
@@ -221,26 +221,66 @@ class _homepage1State extends State<homepage1> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            color: Colors.black,
+                            color:Colors.white,
                             boxShadow: [
                               BoxShadow(
                                   color: Color.fromARGB(255, 230, 229, 229),
                                   spreadRadius: 0.2,
                                   blurRadius: 1)
                             ]),
-                        child: SfCartesianChart(series: <CartesianSeries>[
-                    HistogramSeries<ChartData1, double>(
-                    dataSource: histogramData,
-                    
-                    showNormalDistributionCurve: true,
-                    curveColor: Color.fromARGB(255, 141, 116, 41),
-                    binInterval: 20,
-                    pointColorMapper: (datum, index) => Color.fromARGB(255, 246, 215, 131),
-                    sortFieldValueMapper: (datum, index) => ValueKey(20),
-                    yValueMapper: (ChartData1 data, _) => data.y)]
-                    ,backgroundColor: Colors.white,
-                    
-                     )
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15,top: 30),
+
+                              child: Row(
+                                children: [ 
+                                  Text("Monthly Attendence",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width/5,
+                                  ),
+                                  Text("<",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
+                                  Text(" sept 2022 "),
+                                   Text(">",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
+                                ], 
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: MediaQuery.of(context).size.width/1.3,),
+                                CircleAvatar(backgroundColor: Color.fromARGB(255, 128, 103, 31),
+                                radius: 3,),
+                                Text("  Avg no.",style: TextStyle(fontSize: 10)),
+                              ],
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height/20,
+                            ),
+                            
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/1.2,
+                                height: MediaQuery.of(context).size.height/2.8,
+                                child: SfCartesianChart(series: <CartesianSeries>[
+                                                    HistogramSeries<ChartData1, double>(
+                                                    dataSource: histogramData,
+                                                    
+                                                    showNormalDistributionCurve: true,
+                                                    curveColor: Color.fromARGB(255, 141, 116, 41),
+                                                    binInterval: 20,
+                                                    pointColorMapper: (datum, index) => Color.fromARGB(255, 246, 215, 131),
+                                                    sortFieldValueMapper: (datum, index) => ValueKey(20),
+                                                    yValueMapper: (ChartData1 data, _) => data.y)]
+                                                    ,backgroundColor: Colors.white,
+                                                    
+                                                     ),
+                              ),
+                            ),
+                          ],
+                        )
                   
                         // Image(
                         //   image: AssetImage("asset/graph.png"),

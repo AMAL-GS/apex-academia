@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class StudentAttendence extends StatefulWidget {
@@ -12,6 +13,16 @@ class StudentAttendence extends StatefulWidget {
 class _StudentAttendenceState extends State<StudentAttendence> {
   @override
   Widget build(BuildContext context) {
+    CalendarFormat format = CalendarFormat.month;
+   DateTime selectedDay = DateTime.now();
+   DateTime focusedDay = DateTime.now();
+
+   TextEditingController _eventController = TextEditingController();
+   @override
+   void dispose() {
+    _eventController.dispose();
+    super.dispose();
+   }
     List<String>Attendences=["My Calender","Apply Leave","Upcoming Holidays"];
     return Scaffold(
      backgroundColor: Color.fromARGB(255, 249, 247, 247),
@@ -24,6 +35,7 @@ class _StudentAttendenceState extends State<StudentAttendence> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: ScrollPhysics(),
         child: Column(
           children: [ 
             Row(
@@ -120,20 +132,97 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
                   child: Container(
-                    height: MediaQuery.of(context).size.height/13,
+                  
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(5)
                     
                     ),
-                    child: ExpansionTile(title: Text("My Calender")),
+                    child: ExpansionTile(title: Text("My Calender")
+                    ,children: [
+                      
+                        Column(
+                           children: [
+                            //defining min an max years
+                            Container(
+                              
+                              child: TableCalendar(
+                                 focusedDay: selectedDay,
+                                 firstDay: DateTime(1990),
+                                 lastDay: DateTime(2050),
+                              
+                               //changing calendar format
+                                      calendarFormat: format,
+                                      onFormatChanged: (CalendarFormat _format) {
+                               setState(() {
+                                 format = _format;
+                               });
+                                      },
+                                      startingDayOfWeek: StartingDayOfWeek.monday,
+                                      daysOfWeekVisible: true,
+                              
+                                      //Day Changed on select
+                                      onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                               setState(() {
+                                 selectedDay = selectDay;
+                                 focusedDay = focusDay;
+                               });
+                               print(focusedDay);
+                                      },
+                                      selectedDayPredicate: (DateTime date) {
+                               return isSameDay(selectedDay, date);
+                                      },
+                              
+                              
+                                      //To style the Calendar
+                                      calendarStyle: CalendarStyle(cellPadding: EdgeInsets.all(8),
+                               isTodayHighlighted: true,
+                               selectedDecoration: BoxDecoration(
+                                 color: Colors.blue,
+                                 shape: BoxShape.rectangle,
+                                 borderRadius: BorderRadius.circular(5.0),
+                               ),
+                               selectedTextStyle: TextStyle(color: Colors.white),
+                               todayDecoration: BoxDecoration(
+                                 color: Colors.grey,
+                                 shape: BoxShape.rectangle,
+                                 borderRadius: BorderRadius.circular(5.0),
+                               ),
+                               defaultDecoration: BoxDecoration(
+                                 shape: BoxShape.rectangle,
+                                 borderRadius: BorderRadius.circular(5.0),
+                               ),
+                               weekendDecoration: BoxDecoration(
+                                 shape: BoxShape.rectangle,
+                                 borderRadius: BorderRadius.circular(5.0),
+                               ),
+                                      ),
+                                      headerStyle: HeaderStyle(
+                               formatButtonVisible: true,
+                               titleCentered: true,
+                               formatButtonShowsNext: false,
+                               formatButtonDecoration: BoxDecoration(
+                                 color: Colors.blue,
+                                 borderRadius: BorderRadius.circular(5.0),
+                               ),
+                               formatButtonTextStyle: TextStyle(
+                                 color: Colors.white,
+                               ),
+                                      ),
+                                    ),
+                            ),
+                            ],
+                          ),
+                    ],
+                    
+                    ),
                   ),
                 ),
                  Padding(
                   padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
                   child: Container(
-                    height: MediaQuery.of(context).size.height/13,
+      
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -146,7 +235,7 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                  Padding(
                   padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
                   child: Container(
-                    height: MediaQuery.of(context).size.height/13,
+              
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -154,20 +243,13 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                     
                     ),
                     child: ExpansionTile(title: Text("Upcoming Holidays")
-                    ,children: [   
-                    
-                        
-                         
-                          
-                           
-                            
-                             
-                              
-                               
-                                
-                    ],
+                   
                     ),
                   ),
+                ),
+                Container(
+      
+                  width: double.infinity,
                 )
           ],
         ),

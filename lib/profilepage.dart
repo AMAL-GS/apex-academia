@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_apex_academia/address.dart';
 import 'package:flutter_apex_academia/basicinfo.dart';
 import 'package:flutter_apex_academia/contactedit.dart';
@@ -36,9 +36,14 @@ class _profilepageState extends State<profilepage> {
             title:  Text("Amal",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16),)
                   
                  , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
-                 trailing: CircleAvatar(
-                  radius: 23,
-                  backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                 trailing: InkWell(
+                  onTap: () {
+                  
+                  },
+                   child: CircleAvatar(
+                    radius: 23,
+                    backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                   ),
                  ),
            ),
            Padding(

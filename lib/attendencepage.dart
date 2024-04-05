@@ -14,20 +14,20 @@ class Attendence extends StatefulWidget {
 
 class _AttendenceState extends State<Attendence> {
  TextEditingController datecontroller2=TextEditingController();   
-DateTime _dateTime = DateTime.now();
+DateTime dateTime = DateTime.now();
   
-  void showdatepicker() async {
+  Future<void> showdatepicker(BuildContext context) async {
   
-    DateTime? selectedDate = await showDatePicker(
+   final DateTime? selectedDate = await showDatePicker(
         context: context,
-        initialDate: _dateTime,
+        initialDate: dateTime,
         firstDate: DateTime(2000),
-        lastDate: DateTime(2026));
-    if (selectedDate != null && selectedDate != _dateTime) {
+        lastDate: DateTime(2100));
+    if (selectedDate != null && selectedDate != dateTime) {
       setState(() {
-        _dateTime = selectedDate;
-DateTime now = DateTime.now();
-String formattedDate = DateFormat('yyyy-MM-dd ').format(now);
+        dateTime = selectedDate;
+
+String formattedDate = DateFormat('yyyy-MM-dd ').format(dateTime);
         datecontroller2.text = formattedDate.toString();
       });
     }
@@ -47,20 +47,26 @@ String formattedDate = DateFormat('yyyy-MM-dd ').format(now);
           style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
         ),
         Center(child: Container(height: MediaQuery.of(context).size.height/27,
-        width:  MediaQuery.of(context).size.width/4,
+        width:  MediaQuery.of(context).size.width/3.3,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
+          color:  Color.fromARGB(255, 197, 157, 83),
+          
         
         ),
         child: InkWell(
 onTap: (){
-  showdatepicker();
+  showdatepicker(context);
 },
 
-          child: TextField(
-            controller: datecontroller2,
-            decoration: InputDecoration(
-              hintText: _dateTime.toString()
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,top: 10),
+            child: TextField(
+              controller: datecontroller2,
+              decoration: InputDecoration(
+                hintText: dateTime.toString(),
+                hintStyle: GoogleFonts.poppins()
+              ),
             ),
           ),
         ),
