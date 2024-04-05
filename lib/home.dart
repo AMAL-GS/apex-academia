@@ -399,7 +399,7 @@ class _homepage1State extends State<homepage1> {
                           padding: const EdgeInsets.only(left: 10,),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => AssignmentChecking(),));
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => AssignmentChecking(SelectePageindex: 0,),));
                             },
                             child: SizedBox(
                               height: MediaQuery.of(context).size.height/5,

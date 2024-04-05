@@ -7,16 +7,37 @@ import 'package:flutter_apex_academia/teacherassignment.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AssignmentChecking extends StatefulWidget {
-  const AssignmentChecking({super.key});
+   int SelectePageindex;
+  AssignmentChecking({super.key,required this.SelectePageindex});
 
   @override
   State<AssignmentChecking> createState() => _AssignmentCheckingState();
 }
 
-class _AssignmentCheckingState extends State<AssignmentChecking> {
+
+class _AssignmentCheckingState extends State<AssignmentChecking> 
+with SingleTickerProviderStateMixin{
+ late TabController tabController;
+ final List<String>titlelist=["Assignment","Lab"];
+ late String currentTitle;
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentTitle=titlelist[0];
+    tabController=TabController(initialIndex:widget.SelectePageindex,length: 2, vsync: this ,);
+    tabController.addListener(changetitle);
+  }
+ void changetitle(){
+  setState(() {
+    currentTitle=titlelist[tabController.index];
+  });
+ }
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 2, child: Scaffold(
+   
+
+    return Scaffold(
      appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 245, 237, 198),
         automaticallyImplyLeading: false,
@@ -34,22 +55,27 @@ class _AssignmentCheckingState extends State<AssignmentChecking> {
           style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
         ),
         bottom: TabBar(
+          controller: tabController,
           labelColor: Colors.black,
           indicatorColor: Color.fromARGB(255, 197, 157, 83),
              indicatorSize: TabBarIndicatorSize.tab,
              indicatorPadding: EdgeInsets.only(left: 35,right: 35),
              indicatorWeight: 4,
-
-          tabs: [
+    
+          tabs:
+           [
           Tab(text: "Assignment",),
           Tab(text: "Lab",)
         ]),
       ),
-    body: TabBarView(children: [
+    body: TabBarView(
+      controller: tabController,
+      children: [
       TeacherAssignment(),
       TeacherLab()
-    ]),
 
-    ));
+    ]),
+    
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_apex_academia/assignmentChecking.dart';
 import 'package:flutter_apex_academia/teacherassignment.dart';
 
 class teacherassigrade extends StatefulWidget {
@@ -165,7 +166,7 @@ class _teacherassigradeState extends State<teacherassigrade> {
                          child: Center(child: InkWell
                          (
                           onTap: () {
-                           Navigator.push(context,MaterialPageRoute(builder: (context) => TeacherAssignment(),));
+                           Navigator.push(context,MaterialPageRoute(builder: (context) =>AssignmentChecking(SelectePageindex: 0),));
                           },
                           child: Text("Grade",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),))),
                   ),
