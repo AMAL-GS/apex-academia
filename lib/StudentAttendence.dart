@@ -179,23 +179,20 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                                       calendarStyle: CalendarStyle(cellPadding: EdgeInsets.all(8),
                                isTodayHighlighted: true,
                                selectedDecoration: BoxDecoration(
-                                 color: Colors.blue,
-                                 shape: BoxShape.rectangle,
-                                 borderRadius: BorderRadius.circular(5.0),
+                                 color: const Color.fromARGB(255, 61, 243, 33),
+                                 shape: BoxShape.circle,
+                                 
                                ),
                                selectedTextStyle: TextStyle(color: Colors.white),
                                todayDecoration: BoxDecoration(
                                  color: Colors.grey,
-                                 shape: BoxShape.rectangle,
-                                 borderRadius: BorderRadius.circular(5.0),
+                                 shape:BoxShape.circle,
                                ),
                                defaultDecoration: BoxDecoration(
-                                 shape: BoxShape.rectangle,
-                                 borderRadius: BorderRadius.circular(5.0),
+                                 shape:BoxShape.circle,
                                ),
                                weekendDecoration: BoxDecoration(
-                                 shape: BoxShape.rectangle,
-                                 borderRadius: BorderRadius.circular(5.0),
+                                 shape: BoxShape.circle,
                                ),
                                       ),
                                       headerStyle: HeaderStyle(
@@ -203,8 +200,8 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                                titleCentered: true,
                                formatButtonShowsNext: false,
                                formatButtonDecoration: BoxDecoration(
-                                 color: Colors.blue,
-                                 borderRadius: BorderRadius.circular(5.0),
+                               
+                               
                                ),
                                formatButtonTextStyle: TextStyle(
                                  color: Colors.white,
@@ -212,6 +209,58 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                                       ),
                                     ),
                             ),
+                            Container(
+                          height: 1,
+                          color: const Color.fromARGB(255, 240, 239, 239),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [ 
+                                   CircleAvatar(
+                                    backgroundColor:const Color.fromARGB(255, 61, 243, 33),
+                                    radius: 15,
+                                   ),
+                                   SizedBox(
+                                    width: MediaQuery.of(context).size.width/50,
+                                   ),
+                                   Text("Present"),
+                                    SizedBox(
+                                    width: MediaQuery.of(context).size.width/30,
+                                   ),
+                                    CircleAvatar(
+                                    backgroundColor:Color.fromARGB(255, 211, 39, 9),
+                                    radius: 15,
+                                   ),
+                                    SizedBox(
+                                    width: MediaQuery.of(context).size.width/50,
+                                   ),
+                                   Text("Absent"),
+                                    SizedBox(
+                                    width: MediaQuery.of(context).size.width/30,
+                                   ),
+                                    CircleAvatar(
+                                    backgroundColor:Color.fromARGB(255, 43, 6, 227),
+                                    radius: 15,
+                                    child: CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: Colors.white,
+                                    ),
+                                   ),
+                                    SizedBox(
+                                    width: MediaQuery.of(context).size.width/50,
+                                   ),
+                                   Text("""Holidays/
+Week off"""),
+
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height/15,
+                        )
+
                             ],
                           ),
                     ],

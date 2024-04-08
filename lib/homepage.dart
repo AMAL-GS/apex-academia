@@ -12,6 +12,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  
   int _selectedindex=0;
   static  List<Widget>_widgetoptions=[
     homepage1(),
@@ -37,14 +38,17 @@ class _homePageState extends State<homePage> {
     selectedIconTheme: IconThemeData(color: Colors.amber,size: 30),
     selectedLabelStyle: TextStyle(color: Colors.amber,),
     selectedItemColor: Colors.amber,
-    unselectedIconTheme: IconThemeData(color: Colors.green),
+    showSelectedLabels: true,
+  
+    
+    unselectedIconTheme: IconThemeData(color: const Color.fromARGB(255, 175, 76, 137)),
     items: const <BottomNavigationBarItem>[
     BottomNavigationBarItem(icon: Icon(Icons.home_filled,color: Colors.black,size: 30,),
     label:"Home"
      
   
     ),
-    BottomNavigationBarItem(icon: Icon(Icons.import_contacts,color: Colors.black,size: 30,),
+    BottomNavigationBarItem(icon: Icon(Icons.import_contacts_outlined,color: Colors.black,size: 30,),
 
     label: "Records",
    ),
