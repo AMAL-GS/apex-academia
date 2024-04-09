@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Events.dart';
+import 'package:flutter_apex_academia/StudentAttendence.dart';
 import 'package:flutter_apex_academia/attendencepage.dart';
 import 'package:flutter_apex_academia/home.dart';
 import 'package:flutter_apex_academia/recordspage.dart';
 
 class homePage extends StatefulWidget {
-  const homePage({super.key});
+  var USerSElected;
+  homePage({super.key,required this.USerSElected});
 
   @override
   State<homePage> createState() => _homePageState();
@@ -26,8 +28,26 @@ class _homePageState extends State<homePage> {
       _selectedindex=index;
     });
    }
+   List? userPages=[];
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userPages==null;
+  }
+   
   @override
   Widget build(BuildContext context) {
+    if(widget.USerSElected=="Student"){
+     setState(() {
+      userPages?.add(StudentAttendence());
+     });
+    }
+    else{
+      setState(() {
+        userPages?.add(Attendence());
+      });
+    }
     return Scaffold(
      
       body:Center(

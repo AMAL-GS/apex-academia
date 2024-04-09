@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/loginpage.dart';
+import 'package:flutter_apex_academia/SelectionPage.dart';
+import 'package:flutter_apex_academia/StudentLogin.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -31,7 +32,7 @@ class _homescreenState extends State<homescreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds:5), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>login()));});
+    Timer(Duration(seconds:5), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>SelectionPage()));});
   }
   @override
   Widget build(BuildContext context) {

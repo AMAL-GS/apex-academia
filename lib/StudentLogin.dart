@@ -5,14 +5,15 @@ import 'package:flutter_apex_academia/forgotpassword.dart';
 import 'package:flutter_apex_academia/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class login extends StatefulWidget {
-  const login({super.key});
+class Studentlogin extends StatefulWidget {
+  var SelectedUserlogin;
+ Studentlogin({super.key,required this.SelectedUserlogin});
 
   @override
-  State<login> createState() => _loginState();
+  State<Studentlogin> createState() => _loginState();
 }
 
-class _loginState extends State<login> {
+class _loginState extends State<Studentlogin> {
   void toggleShowpassword(){
     
   }
@@ -22,7 +23,7 @@ class _loginState extends State<login> {
     TextEditingController academyidcontroller=TextEditingController();
     TextEditingController passwordcontroller=TextEditingController();
     bool showpassword=false;
-    
+    print("${widget.SelectedUserlogin},ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
     
     return Scaffold(
       body: SingleChildScrollView(
@@ -116,7 +117,7 @@ class _loginState extends State<login> {
                  ),
                  Padding(
                    padding: const EdgeInsets.all(15),
-                  child: InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>homePage()));},
+                  child: InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>homePage(USerSElected: widget.SelectedUserlogin)));},
                     child: Container(
                        height: MediaQuery.of(context).size.height/11,
                       width: double.infinity,
