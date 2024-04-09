@@ -1,46 +1,42 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import 'package:flutter_apex_academia/StudentAttendence.dart';
-import 'package:flutter_apex_academia/assignmentChecking.dart';
-import 'package:flutter_apex_academia/notification.dart';
-import 'package:flutter_apex_academia/profilepage.dart';
-import 'package:flutter_apex_academia/searchpage.dart';
+import 'package:flutter_apex_academia/Student/Student_notification.dart';
+import 'package:flutter_apex_academia/teacher/attendencepage.dart';
+import 'package:flutter_apex_academia/teacher/searchpage.dart';
+import 'package:flutter_apex_academia/teacher/teacher_profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class homepage1 extends StatefulWidget {
-  const homepage1({super.key});
+class Teacher_home extends StatefulWidget {
+  const Teacher_home({super.key});
 
   @override
-  State<homepage1> createState() => _homepage1State();
+  State<Teacher_home> createState() => _Teacher_homeState();
 }
 
-class _homepage1State extends State<homepage1> {
-  @override
-  
-  ScrollController _scrollViewController = ScrollController();
-  bool _showAppbar = true;
-  bool isScrollingDown = false;
+class _Teacher_homeState extends State<Teacher_home> {
+    ScrollController _scrollViewController1 = ScrollController();
+  bool _showAppbar1 = true;
+  bool isScrollingDown1 = false;
   void initState() {
     super.initState();
-    _scrollViewController = new ScrollController();
-    _scrollViewController.addListener(() {
-      if (_scrollViewController.position.userScrollDirection ==
+    _scrollViewController1 = new ScrollController();
+    _scrollViewController1.addListener(() {
+      if (_scrollViewController1.position.userScrollDirection ==
           ScrollDirection.reverse) {
-        if (!isScrollingDown) {
-          isScrollingDown = true;
-          _showAppbar = false;
+        if (!isScrollingDown1) {
+          isScrollingDown1 = true;
+          _showAppbar1 = false;
           setState(() {});
         }
       }
 
-      if (_scrollViewController.position.userScrollDirection ==
+      if (_scrollViewController1.position.userScrollDirection ==
           ScrollDirection.forward) {
-        if (isScrollingDown) {
-          isScrollingDown = false;
-          _showAppbar = true;
+        if (isScrollingDown1) {
+          isScrollingDown1 = false;
+          _showAppbar1 = true;
           setState(() {});
         }
       }
@@ -54,10 +50,12 @@ class _homepage1State extends State<homepage1> {
   ];
   List<String>subjectnames=["English","Malayalam","Science","Maths","Physiscs","Social","Chemistry",
   "Computer","Hindi","Biology"];
-  
   @override
   Widget build(BuildContext context) {
-    final List<ChartData1> histogramData = <ChartData1>[
+    List<String>subjectsteacher=["Social","Physics","Physics","Social","Social","Physics","Physics",];
+    List<String>Classes=["10th B","10th A","10th C","10th E","10th G","10th D","10th F", ];
+    List<String>Periods=["1st period","2nd period","3rd period","4th period","5th period","6th period","7th period"];
+     final List<ChartData1> histogramData = <ChartData1>[
         ChartData1(5.250),
         ChartData1(7.750),
         ChartData1(0.0),
@@ -160,12 +158,12 @@ class _homepage1State extends State<homepage1> {
         ChartData1(95.250)
         ];
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 249, 247, 247),
+       backgroundColor: Color.fromARGB(255, 249, 247, 247),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             AnimatedContainer(
-              height: _showAppbar ? 56.0 : 0.0,
+              height: _showAppbar1 ? 56.0 : 0.0,
               duration: Duration(milliseconds: 200),
               child: AppBar(
                 automaticallyImplyLeading: false,
@@ -194,7 +192,7 @@ class _homepage1State extends State<homepage1> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => profilepage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Teacher_profile()));
                     },
                     child: CircleAvatar(
                       backgroundImage: AssetImage("asset/profilephoto.jpg"),
@@ -209,7 +207,7 @@ class _homepage1State extends State<homepage1> {
             ),
             Expanded(
               child: SingleChildScrollView(
-                controller: _scrollViewController,
+                controller: _scrollViewController1,
                 physics: ScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,95 +289,90 @@ class _homepage1State extends State<homepage1> {
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text(
-                        "upcoming works",
+                        "upcoming class",
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => StudentAttendence(),));
-                      },
-                      child: ListView.builder(
-                        itemCount: 3,
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 15,right: 15,top: 8),
-                            child: Container(
-                              height: MediaQuery.of(context).size.height / 10,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Color.fromARGB(255, 218, 218, 218),
-                                        spreadRadius: 0.2,
-                                        blurRadius: 1)
-                                  ]),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    top: MediaQuery.of(context).size.height / 70,
-                                    left: MediaQuery.of(context).size.width / 30,
-                                    child: SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height / 15,
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(3),
-                                        child: SizedBox.fromSize(
-                                          size: Size.fromRadius(30),
-                                          child: Image.asset(
-                                            "asset/glob1.webp",
-                                            fit: BoxFit.cover,
-                                          ),
+                    ListView.builder(
+                      itemCount: 7,
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 15,right: 15,top: 8),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height / 10,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Color.fromARGB(255, 218, 218, 218),
+                                      spreadRadius: 0.2,
+                                      blurRadius: 1)
+                                ]),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  top: MediaQuery.of(context).size.height / 70,
+                                  left: MediaQuery.of(context).size.width / 30,
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height / 15,
+                                    width:
+                                        MediaQuery.of(context).size.width / 6,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(3),
+                                      child: SizedBox.fromSize(
+                                        size: Size.fromRadius(30),
+                                        child: Image.asset(
+                                          "asset/glob1.webp",
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Positioned(
-                                      top:
-                                          MediaQuery.of(context).size.height / 80,
-                                      left:
-                                          MediaQuery.of(context).size.width / 4.3,
-                                      child: Text(
-                                        "Social",
-                                        style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 183, 138, 3),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500),
-                                      )),
-                                  Positioned(
+                                ),
+                                Positioned(
+                                    top:
+                                        MediaQuery.of(context).size.height / 80,
                                     left:
-                                          MediaQuery.of(context).size.width / 4.3,
-                                          top: MediaQuery.of(context).size.height/27,
-                                      child: Text(
-                                    "Case study project",
-                                    style: TextStyle(fontSize: 14),
-                                  )),
+                                        MediaQuery.of(context).size.width / 4.3,
+                                    child: Text(
+                                     subjectsteacher[index],
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 183, 138, 3),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                                Positioned(
+                                  left:
+                                        MediaQuery.of(context).size.width / 4.3,
+                                        top: MediaQuery.of(context).size.height/27,
+                                    child: Text(
+                                  Classes[index],
+                                  style: TextStyle(fontSize: 14),
+                                )),
+                                Positioned(
+                                   left:MediaQuery.of(context).size.width / 4.3,
+                                        top: MediaQuery.of(context).size.height/17,
+                                  child: Text(Periods[index],style: TextStyle(fontSize: 11),)),
                                   Positioned(
-                                     left:MediaQuery.of(context).size.width / 4.3,
-                                          top: MediaQuery.of(context).size.height/17,
-                                    child: Text("Prepare for the section",style: TextStyle(fontSize: 11),)),
-                                    Positioned(
-                                       left:
-                                          MediaQuery.of(context).size.width /  1.2,
-                                          top: MediaQuery.of(context).size.height/29,
-                                      child: Icon(Icons.arrow_circle_right_outlined,
-                                      color: const Color.fromARGB(255, 197, 148, 2),size: 30,))
-                                ],
-                              ),
+                                     left:
+                                        MediaQuery.of(context).size.width /  1.2,
+                                        top: MediaQuery.of(context).size.height/29,
+                                    child: Icon(Icons.arrow_circle_right_outlined,
+                                    color: const Color.fromARGB(255, 197, 148, 2),size: 30,))
+                              ],
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
@@ -397,54 +390,49 @@ class _homepage1State extends State<homepage1> {
                         itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(left: 10,),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => AssignmentChecking(SelectePageindex: 0,),));
-                            },
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height/5,
+                            width: MediaQuery.of(context).size.width/3.1,
                             child: SizedBox(
-                              height: MediaQuery.of(context).size.height/5,
-                              width: MediaQuery.of(context).size.width/3.1,
-                              child: SizedBox(
-                                              
-                                child: Card(
-                                  color: Colors.black,
-                                   child: Stack(
-                                    children: [ 
-                                       ClipRRect(
-                                        borderRadius: BorderRadius.circular(7),
-                                        child: SizedBox.fromSize(
-                                          size: Size.fromRadius(MediaQuery.of(context).size.width/3.1),
-                                          child: Image.asset(
-                                            dailylearningpics[index],
-                                            fit: BoxFit.cover,
                                             
-                                          ),
+                              child: Card(
+                                color: Colors.black,
+                                 child: Stack(
+                                  children: [ 
+                                     ClipRRect(
+                                      borderRadius: BorderRadius.circular(7),
+                                      child: SizedBox.fromSize(
+                                        size: Size.fromRadius(MediaQuery.of(context).size.width/3.1),
+                                        child: Image.asset(
+                                          dailylearningpics[index],
+                                          fit: BoxFit.cover,
+                                          
                                         ),
                                       ),
-                                      Container(
-                                       height: MediaQuery.of(context).size.height/4.6,
-                                       width: MediaQuery.of(context).size.width/3.1
-                                       ,decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.center,
-                                          end: Alignment.bottomCenter,
-                                          stops: [
-                                            .3,
-                                            0.5
-                                          ],
-                                          colors:[Colors.black.withOpacity(0.1),Colors.black.withOpacity(0.6)])
-                                       ),
-                                      ),
-                                      Positioned(
-                                        bottom: 10,
-                                        left: MediaQuery.of(context).size.width/14,
-                                        child: Text(subjectnames[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),))
-                                    ],
-                                   ),
-                                ),
-                              )),
-                          ),
+                                    ),
+                                    Container(
+                                     height: MediaQuery.of(context).size.height/4.6,
+                                     width: MediaQuery.of(context).size.width/3.1
+                                     ,decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      gradient: LinearGradient(
+                                        begin: Alignment.center,
+                                        end: Alignment.bottomCenter,
+                                        stops: [
+                                          .3,
+                                          0.5
+                                        ],
+                                        colors:[Colors.black.withOpacity(0.1),Colors.black.withOpacity(0.6)])
+                                     ),
+                                    ),
+                                    Positioned(
+                                      bottom: 10,
+                                      left: MediaQuery.of(context).size.width/14,
+                                      child: Text(subjectnames[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),))
+                                  ],
+                                 ),
+                              ),
+                            )),
                         );
                       },),
                     )
@@ -455,6 +443,7 @@ class _homepage1State extends State<homepage1> {
           ],
         ),
       ),
+
     );
   }
 }

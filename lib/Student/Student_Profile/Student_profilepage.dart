@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_apex_academia/address.dart';
-import 'package:flutter_apex_academia/basicinfo.dart';
-import 'package:flutter_apex_academia/contactedit.dart';
+import 'package:flutter_apex_academia/Student/Student_Profile/Student_address.dart';
+import 'package:flutter_apex_academia/Student/Student_Profile/Student_basicinfo.dart';
+import 'package:flutter_apex_academia/Student/Student_Profile/Student_contactedit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class profilepage extends StatefulWidget {

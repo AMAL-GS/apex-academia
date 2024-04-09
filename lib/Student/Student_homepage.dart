@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/Events.dart';
-import 'package:flutter_apex_academia/StudentAttendence.dart';
-import 'package:flutter_apex_academia/attendencepage.dart';
-import 'package:flutter_apex_academia/home.dart';
-import 'package:flutter_apex_academia/recordspage.dart';
+import 'package:flutter_apex_academia/Student/Student_Events.dart';
+import 'package:flutter_apex_academia/Student/StudentAttendence.dart';
+import 'package:flutter_apex_academia/teacher/attendencepage.dart';
+import 'package:flutter_apex_academia/Student/Student_home.dart';
+import 'package:flutter_apex_academia/Student/Student_recordspage.dart';
 
 class homePage extends StatefulWidget {
-  var USerSElected;
-  homePage({super.key,required this.USerSElected});
+  
+  homePage({super.key,});
 
   @override
   State<homePage> createState() => _homePageState();
@@ -19,7 +19,7 @@ class _homePageState extends State<homePage> {
   static  List<Widget>_widgetoptions=[
     homepage1(),
     Records(),
-    Attendence(),
+    StudentAttendence(),
      Calendar(),
 
   ];
@@ -28,26 +28,13 @@ class _homePageState extends State<homePage> {
       _selectedindex=index;
     });
    }
-   List? userPages=[];
-   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    userPages==null;
-  }
+   
+   
+  
    
   @override
   Widget build(BuildContext context) {
-    if(widget.USerSElected=="Student"){
-     setState(() {
-      userPages?.add(StudentAttendence());
-     });
-    }
-    else{
-      setState(() {
-        userPages?.add(Attendence());
-      });
-    }
+    
     return Scaffold(
      
       body:Center(

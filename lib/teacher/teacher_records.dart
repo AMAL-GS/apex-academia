@@ -1,16 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/studentassignmentpage.dart';
+import 'package:flutter_apex_academia/teacher/assignmentChecking.dart';
 
-class Records extends StatefulWidget {
-  const Records({super.key});
+class Teacher_Records extends StatefulWidget {
+  const Teacher_Records({super.key});
 
   @override
-  State<Records> createState() => _RecordsState();
+  State<Teacher_Records> createState() => _Teacher_RecordsState();
 }
 
-class _RecordsState extends State<Records> {
+class _Teacher_RecordsState extends State<Teacher_Records> {
   @override
-  List<String> subjects = [
+  Widget build(BuildContext context) {
+     List<String> subjects = [
     "All",
     "English",
     "Malayalam",
@@ -23,9 +25,8 @@ class _RecordsState extends State<Records> {
     "Hindi",
     "Biology"
   ];
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
+    return Scaffold( 
+       body: SafeArea(
       child: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Column(
@@ -65,7 +66,7 @@ class _RecordsState extends State<Records> {
                           InkWell(
                             onTap: () {
                               
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => SassignmentPage(subjectss: subjects[index]),));
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => AssignmentChecking(SelectePageindex: 0, ),));
                             },
                             child: Container(
                               height: MediaQuery.of(context).size.height / 8.5,
@@ -91,6 +92,8 @@ class _RecordsState extends State<Records> {
           ],
         ),
       ),
-    ));
+    )
+
+    );
   }
 }

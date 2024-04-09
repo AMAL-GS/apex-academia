@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/profilepage.dart';
+import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddressEdit extends StatefulWidget {

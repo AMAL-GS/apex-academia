@@ -1,21 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/teacherassigrade.dart';
+import 'package:flutter_apex_academia/teacher/assignmentChecking.dart';
+import 'package:flutter_apex_academia/teacher/teacherassignment.dart';
 
-class TeacherAssichecking extends StatefulWidget {
-  const TeacherAssichecking({super.key});
+class teacherassigrade extends StatefulWidget {
+  const teacherassigrade({super.key});
 
   @override
-  State<TeacherAssichecking> createState() => _TeacherAssicheckingState();
+  State<teacherassigrade> createState() => _teacherassigradeState();
 }
 
-class _TeacherAssicheckingState extends State<TeacherAssichecking> {
+class _teacherassigradeState extends State<teacherassigrade> {
+  List<String>gradess=["A","B","C","D"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
        backgroundColor: const Color.fromARGB(255, 237, 234, 234),
       appBar: AppBar(
-         backgroundColor:  Color.fromARGB(255, 245, 237, 198),
+         backgroundColor: Color.fromARGB(255, 245, 237, 198),
         automaticallyImplyLeading: false,
         leading: InkWell(
           child: Icon(
@@ -103,20 +105,32 @@ class _TeacherAssicheckingState extends State<TeacherAssichecking> {
               ),
             ),
              SizedBox(
-            height: MediaQuery.of(context).size.height/22,
+            height: MediaQuery.of(context).size.height/16,
           ),
-          
-          Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height/4,
-            
-              width: MediaQuery.of(context).size.width/1.8,
-            color: Colors.amber,
-            ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Text("Grade",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
           ),
-               SizedBox(
-              height: MediaQuery.of(context).size.height/2.89,
-             ),
+          SizedBox(height: MediaQuery.of(context).size.height/30),
+          ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 4,
+            itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
+              child: Container(
+               decoration: BoxDecoration( color: Colors.white,borderRadius: BorderRadius.circular(6)),
+                child: ListTile(
+                  leading: Text(gradess[index],style: TextStyle(fontSize: 17),),
+                ),
+              ),
+            );
+          },),
+          SizedBox(
+            height: MediaQuery.of(context).size.height/6.45,
+          ),
+        
                Container(
                 height: 1,
                 width: double.infinity,
@@ -152,7 +166,7 @@ class _TeacherAssicheckingState extends State<TeacherAssichecking> {
                          child: Center(child: InkWell
                          (
                           onTap: () {
-                           Navigator.push(context,MaterialPageRoute(builder: (context) => teacherassigrade(),));
+                           Navigator.push(context,MaterialPageRoute(builder: (context) =>AssignmentChecking(SelectePageindex: 0),));
                           },
                           child: Text("Grade",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),))),
                   ),

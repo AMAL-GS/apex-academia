@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_apex_academia/TeacherLab.dart';
+import 'package:flutter_apex_academia/teacher/TeacherLab.dart';
 
-import 'package:flutter_apex_academia/teacherassignment.dart';
+import 'package:flutter_apex_academia/teacher/teacherassignment.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AssignmentChecking extends StatefulWidget {
    int SelectePageindex;
-  AssignmentChecking({super.key,required this.SelectePageindex});
+   
+  AssignmentChecking({super.key,required this.SelectePageindex,});
 
   @override
   State<AssignmentChecking> createState() => _AssignmentCheckingState();

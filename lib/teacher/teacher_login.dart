@@ -1,32 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_apex_academia/contactus.dart';
 import 'package:flutter_apex_academia/forgotpassword.dart';
-import 'package:flutter_apex_academia/homepage.dart';
+import 'package:flutter_apex_academia/teacher/Teacher_homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Studentlogin extends StatefulWidget {
-  var SelectedUserlogin;
- Studentlogin({super.key,required this.SelectedUserlogin});
+class Teacher_login extends StatefulWidget {
+  const Teacher_login({super.key});
 
   @override
-  State<Studentlogin> createState() => _loginState();
+  State<Teacher_login> createState() => _Teacher_loginState();
 }
 
-class _loginState extends State<Studentlogin> {
-  void toggleShowpassword(){
-    
-  }
-
-  @override
-  Widget build(BuildContext context) {
+class _Teacher_loginState extends State<Teacher_login> {
     TextEditingController academyidcontroller=TextEditingController();
     TextEditingController passwordcontroller=TextEditingController();
     bool showpassword=false;
-    print("${widget.SelectedUserlogin},ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
-    
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+       body: SingleChildScrollView(
         child: Column(
         
           
@@ -117,7 +111,7 @@ class _loginState extends State<Studentlogin> {
                  ),
                  Padding(
                    padding: const EdgeInsets.all(15),
-                  child: InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>homePage(USerSElected: widget.SelectedUserlogin)));},
+                  child: InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>Teacher_homepage()));},
                     child: Container(
                        height: MediaQuery.of(context).size.height/11,
                       width: double.infinity,

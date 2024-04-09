@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/SLabpage.dart';
-import 'package:flutter_apex_academia/sAssignmentsumbimission.dart';
+import 'package:flutter_apex_academia/Student/SLabpage.dart';
+import 'package:flutter_apex_academia/Student/sAssignmentsumbimission.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SassignmentPage extends StatefulWidget {

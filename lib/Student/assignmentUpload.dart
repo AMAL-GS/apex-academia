@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/recordspage.dart';
-import 'package:flutter_apex_academia/ssignView.dart';
+import 'package:flutter_apex_academia/Student/Student_recordspage.dart';
+import 'package:flutter_apex_academia/Student/ssignView.dart';
 
 class AssignmentUpload extends StatefulWidget {
   const AssignmentUpload({super.key});

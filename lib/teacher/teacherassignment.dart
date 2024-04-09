@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/teacherassiche.dart';
+import 'package:flutter_apex_academia/teacher/teacherassiche.dart';
 
 
 class TeacherAssignment extends StatefulWidget {

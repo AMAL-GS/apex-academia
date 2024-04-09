@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/assignmentUpload.dart';
+import 'package:flutter_apex_academia/Student/assignmentUpload.dart';
 
 class sAssignmentsub extends StatefulWidget {
   const sAssignmentsub({super.key});

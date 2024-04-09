@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_apex_academia/AfternoonAttendence.dart';
-import 'package:flutter_apex_academia/morningattendence.dart';
+import 'package:flutter_apex_academia/teacher/AfternoonAttendence.dart';
+import 'package:flutter_apex_academia/teacher/morningattendence.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
