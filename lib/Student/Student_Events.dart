@@ -90,7 +90,7 @@ class _CalendarState extends State<Calendar> {
                           ),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width / 2.5,
+                          width: MediaQuery.of(context).size.width /3,
                         ),
                         IconButton(
                             onPressed: () {
