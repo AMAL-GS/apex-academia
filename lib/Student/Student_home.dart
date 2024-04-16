@@ -175,11 +175,11 @@ class _homepage1State extends State<homepage1> {
                       fontSize: 25, fontWeight: FontWeight.w600),
                 ),
                 actions: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
-                    },
-                    child: Icon(Icons.search,size: 30,)),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
+                  //   },
+                  //   child: Icon(Icons.search,size: 30,)),
                  InkWell(child: 
                    Icon(
                     Icons.notifications_none_outlined,

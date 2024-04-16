@@ -55,7 +55,7 @@ class _RecordsState extends State<Records> {
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
+                  crossAxisSpacing: 0,
                   children: List.generate(11, (index) {
                     return Container(
                       height: MediaQuery.of(context).size.height / 20,

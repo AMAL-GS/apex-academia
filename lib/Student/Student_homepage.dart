@@ -41,7 +41,7 @@ class _homePageState extends State<homePage> {
     child: _widgetoptions.elementAt(_selectedindex),
    ),
   bottomNavigationBar: BottomNavigationBar(
-    type: BottomNavigationBarType.fixed, 
+    type: BottomNavigationBarType.fixed, elevation:0 ,
     selectedIconTheme: IconThemeData(color: Colors.amber,size: 30),
     selectedLabelStyle: TextStyle(color: Colors.amber,),
     selectedItemColor: Colors.amber,
