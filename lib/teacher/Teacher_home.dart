@@ -173,16 +173,17 @@ class _Teacher_homeState extends State<Teacher_home> {
                       fontSize: 25, fontWeight: FontWeight.w600),
                 ),
                 actions: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
-                    },
-                    child: Icon(Icons.search,size: 30,)),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
+                  //   },
+                  //   child: Icon(Icons.search,size: 30,)),
                  InkWell(child: 
                    Icon(
                     Icons.notifications_none_outlined,
-                    size: 37,
-                  ),
+                    size: 30,
+                    
+                                     ),
                   onTap: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context) => NotificationPage(),));
                   },
@@ -192,12 +193,23 @@ class _Teacher_homeState extends State<Teacher_home> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Teacher_profile()));
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
                     },
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("asset/profilephoto.jpg"),
-                      radius: 25,
+                    child: Container(
+                     
+                      height: MediaQuery.of(context).size.height/35,
+                      width: MediaQuery.of(context).size.width/6,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(3),
+                     
+                      border: Border.all(color: Color.fromARGB(255, 121, 119, 119))),
+                      child: Center(
+                        child: Text("Students",style: TextStyle(fontSize: 12),),
+                      ),
                     ),
+                  //   child: CircleAvatar(
+                  //     backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                  //     radius: 25,
+                  //   ),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 30,

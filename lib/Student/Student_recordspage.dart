@@ -68,7 +68,7 @@ class _RecordsState extends State<Records> {
                               Navigator.push(context,MaterialPageRoute(builder: (context) => SassignmentPage(subjectss: subjects[index]),));
                             },
                             child: Container(
-                              height: MediaQuery.of(context).size.height / 8.5,
+                              height: MediaQuery.of(context).size.height /9,
                               width: MediaQuery.of(context).size.width / 4,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),

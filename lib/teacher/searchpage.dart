@@ -102,7 +102,7 @@ class _SearchPageState extends State<SearchPage> {
                   
                             height:MediaQuery.of(context).size.height/10,
                     width: MediaQuery.of(context).size.width/5,
-                   color: Colors.white,
+                  
                     child: Column(
                       children: [ 
                         CircleAvatar(

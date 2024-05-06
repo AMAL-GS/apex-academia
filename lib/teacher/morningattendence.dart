@@ -15,6 +15,15 @@ class _MorningAttendenceState extends State<MorningAttendence> {
     super.initState();
     items: List<String>.generate(10000, (i) => i.toString());
   }
+    final List<String> Studentsatte = ["ANUNANDHANA","SUBIN","ARUN","NITHEESH",
+    "ANANDHU","RAJISHA","RAMISHA","ANAKHA","SIVANI","NAJA","MIMMINI","ZIA",
+    "SIVAGANGA",
+    "ABHIJITH","ABHINANDH","RIDHUN","ANOOP","ANI","ANISH","ANUSHA","ANSHAF",
+    "ANAS","AMAL","AKASH K","AKASH P","AKSHAY","AJITH","RAHUL","DEEPIKA",
+    "SUSU","KRIPA","CHANDRAN","AMALA","SURYA","SOYA",
+    "DHANESH","MAHIN","DHARSHITH","DEVANANDHA","DEVANJANA","GEET","AACHI ","NEHA",
+    "DHRASHTI","SREESHMA","VRINDHA",'Some other item'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +35,7 @@ class _MorningAttendenceState extends State<MorningAttendence> {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 15,
+              itemCount: Studentsatte.length,
               itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(15),
@@ -44,7 +53,7 @@ class _MorningAttendenceState extends State<MorningAttendence> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width/10,
                     ),
-                    Text("Amal",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),)
+                    Text(Studentsatte[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),)
                      ,SizedBox(
                       width: MediaQuery.of(context).size.width/3,
                     ),

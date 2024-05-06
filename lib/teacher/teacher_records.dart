@@ -69,7 +69,7 @@ class _Teacher_RecordsState extends State<Teacher_Records> {
                               Navigator.push(context,MaterialPageRoute(builder: (context) => AssignmentChecking(SelectePageindex: 0, ),));
                             },
                             child: Container(
-                              height: MediaQuery.of(context).size.height / 8.5,
+                              height: MediaQuery.of(context).size.height / 9,
                               width: MediaQuery.of(context).size.width / 4,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),

@@ -1,9 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_apex_academia/Apis&URLs/API.dart';
+import 'package:flutter_apex_academia/Student/Student_home.dart';
+import 'package:flutter_apex_academia/Student/Student_homepage.dart';
+
+
 import 'package:flutter_apex_academia/contactus.dart';
 import 'package:flutter_apex_academia/forgotpassword.dart';
-import 'package:flutter_apex_academia/Student/Student_homepage.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 class Studentlogin extends StatefulWidget {
   
@@ -12,16 +18,18 @@ class Studentlogin extends StatefulWidget {
   @override
   State<Studentlogin> createState() => _loginState();
 }
-
+    var Studentacademyidcontroller=TextEditingController();
+    var Studentpasswordcontroller=TextEditingController();
 class _loginState extends State<Studentlogin> {
   void toggleShowpassword(){
     
   }
+  @override
+
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController academyidcontroller=TextEditingController();
-    TextEditingController passwordcontroller=TextEditingController();
+
     bool showpassword=false;
 
     
@@ -68,7 +76,7 @@ class _loginState extends State<Studentlogin> {
                       border: OutlineInputBorder(),
                       
                     ),
-                    controller: academyidcontroller,
+                    controller: Studentacademyidcontroller,
             
                    ),
                  ),
@@ -95,7 +103,7 @@ class _loginState extends State<Studentlogin> {
                         },)
                       
                     ),
-                    controller: passwordcontroller,
+                    controller: Studentpasswordcontroller,
                    ),
                  ),
                  Row(
@@ -117,7 +125,7 @@ class _loginState extends State<Studentlogin> {
                  ),
                  Padding(
                    padding: const EdgeInsets.all(15),
-                  child: InkWell(onTap: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>homePage()));},
+                  child: InkWell(onTap: StudentloginPost,
                     child: Container(
                        height: MediaQuery.of(context).size.height/11,
                       width: double.infinity,
@@ -156,5 +164,59 @@ class _loginState extends State<Studentlogin> {
         ),
       ),
     );
+  }
+   void StudentloginPost() async {
+    final username = Studentacademyidcontroller.text;
+    final password = Studentpasswordcontroller.text;
+    if (username.isEmpty) {
+      showErrorMessage("Please enter Username"); 
+    } else if (password.isEmpty) {
+      showErrorMessage("Please enter Password");
+    } else {
+      final formData1 =
+          FormData.fromMap({"acid": username, "password": password});
+      final result = await Apiclass().StudentLoginApi(formData1);
+
+      if (result != null) {
+        
+     
+          showSuccessMessage("succsessfully Logged");
+          Navigator.push(context,MaterialPageRoute(builder: (context) => homepage1(),));
+  
+      } else {
+        showErrorMessage("Login failed :)");
+      }
+      }
+    }
+    
+  
+
+  void showErrorMessage(String message) {
+    MotionToast.error(
+      title: Text("Error"),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: false,
+    ).show(context);
+  }
+
+  void showSuccessMessage(String message) {
+    MotionToast.success(
+      title: const Text(
+        'Success',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      description: Text(message),
+      position: MotionToastPosition.top,
+      barrierColor: Colors.black.withOpacity(0.3),
+      width: 300,
+      height: 80,
+      dismissable: false,
+    ).show(context);
   }
 }

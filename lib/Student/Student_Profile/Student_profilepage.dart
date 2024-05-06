@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_apex_academia/Apis&URLs/API.dart';
 
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_address.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_basicinfo.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_contactedit.dart';
+import 'package:flutter_apex_academia/Student/Student_cert.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class profilepage extends StatefulWidget {
@@ -14,11 +16,22 @@ class profilepage extends StatefulWidget {
 }
 
 class _profilepageState extends State<profilepage> {
+   
+var personaldatas=[];
   List support=["Suggestion","About us"];
   List legal=["Terms and conditions","Logout"];
+  
+  
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   StudentProfile1();
+  }
   
   Widget build(BuildContext context) {
+    
+   
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 239, 239),
       appBar: AppBar(
@@ -101,7 +114,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Title:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text("Mr")
+                              Text("Title:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text(
+                                result[0]["title"]
+                                )
                             ],
                           ),
                         ) , Padding(
@@ -109,7 +124,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("First Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text("Amal")
+                              Text("First Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text(
+                                result[0]["fname"]
+                                )
                             ],
                           ),
                         ) 
@@ -118,7 +135,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Last Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text("G s")
+                              Text("Last Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text(
+                                result[0]["lname"]
+                                )
                             ],
                           ),
                         ),
@@ -127,7 +146,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("DOB:"),SizedBox(width:MediaQuery.of(context).size.width/3.4,),Text("28/02/1996")
+                              Text("DOB:"),SizedBox(width:MediaQuery.of(context).size.width/3.4,),Text(
+                                result[0]["dob"]
+                                )
                             ],
                           ),
                         ) ,
@@ -136,7 +157,7 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Gender:"),SizedBox(width:MediaQuery.of(context).size.width/4.1,),Text("M")
+                              Text("Gender:"),SizedBox(width:MediaQuery.of(context).size.width/4.1,),Text("uuuuuuuuuu/")
                             ],
                           ),
                         ),
@@ -145,7 +166,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Nationality:"),SizedBox(width:MediaQuery.of(context).size.width/5.4,),Text("Indian")
+                              Text("Nationality:"),SizedBox(width:MediaQuery.of(context).size.width/5.4,),Text(
+                                result[0]["nationality"]
+                                )
                             ],
                           ),
                         ),
@@ -154,7 +177,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Blood Group:"),SizedBox(width:MediaQuery.of(context).size.width/6.2,),Text("B+")
+                              Text("Blood Group:"),SizedBox(width:MediaQuery.of(context).size.width/6.2,),Text(
+                                result[0]["bldgrp"]
+                                )
                             ],
                           ),
                         ),
@@ -163,7 +188,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Place of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.9,),Text("kannur")
+                              Text("Place of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.9,),Text(
+                                result[0]["pob"]
+                                )
                             ],
                           ),
                         ),
@@ -172,7 +199,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("State of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.6,),Text("Kerala")
+                              Text("State of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.6,),Text(
+                                result[0]["sob"]
+                                )
                             ],
                           ),
                         ),
@@ -181,7 +210,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Religion:"),SizedBox(width:MediaQuery.of(context).size.width/4.2,),Text("Indian")
+                              Text("Religion:"),SizedBox(width:MediaQuery.of(context).size.width/4.2,),Text(
+                                result[0]["religion"]
+                                )
                             ],
                           ),
                         ),
@@ -190,7 +221,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Height(in CMs):"),SizedBox(width:MediaQuery.of(context).size.width/8.3,),Text("170")
+                              Text("Height(in CMs):"),SizedBox(width:MediaQuery.of(context).size.width/8.3,),Text(
+                                result[0]["hight"]
+                                )
                             ],
                           ),
                         ),
@@ -199,7 +232,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Weight(in KGs):"),SizedBox(width:MediaQuery.of(context).size.width/7.9,),Text("70")
+                              Text("Weight(in KGs):"),SizedBox(width:MediaQuery.of(context).size.width/7.9,),Text(
+                                result[0]["weight"]
+                                )
                             ],
                           ),
                         ),
@@ -208,7 +243,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Mother Toungue:"),SizedBox(width:MediaQuery.of(context).size.width/9.6,),Text("Malayalam")
+                              Text("Mother Toungue:"),SizedBox(width:MediaQuery.of(context).size.width/9.6,),Text(
+                                result[0]["ml"]
+                                )
                             ],
                           ),
                         ),
@@ -217,7 +254,9 @@ class _profilepageState extends State<profilepage> {
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Caste:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text("General")
+                              Text("Caste:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text(
+                                result[0]["cast"]
+                                )
                             ],
                           ),
                         ),
@@ -273,7 +312,7 @@ class _profilepageState extends State<profilepage> {
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/3.5,
                         )
-                        ,Text("amalgs6282@gmail.com")
+                        ,Text(result[0]["email"])
                       ],
                     ),
                   ),
@@ -285,7 +324,7 @@ class _profilepageState extends State<profilepage> {
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/4.6,
                         )
-                        ,Text("6282541736")
+                        ,Text(result[0]["phone"])
                       ],
                     ),
                   )
@@ -298,7 +337,7 @@ class _profilepageState extends State<profilepage> {
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/25.9,
                         )
-                        ,Text("6282541736")
+                        ,Text(result[0]["sphone"])
                       ],
                     ),
                   ), Row(
@@ -343,7 +382,7 @@ class _profilepageState extends State<profilepage> {
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/6.1,
                               )
-                              ,Text("Mottemmal")
+                              ,Text(result[0]["house"])
                             ],
                           ),
                         ),
@@ -355,7 +394,7 @@ class _profilepageState extends State<profilepage> {
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/3.2,
                               )
-                              ,Text("Kannur")
+                              ,Text(result[0]["city"])
                             ],
                           ),
                         ),
@@ -367,7 +406,7 @@ class _profilepageState extends State<profilepage> {
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/4.3,
                               )
-                              ,Text("670693")
+                              ,Text(result[0]["pin"])
                             ],
                           ),
                         ),Padding(
@@ -378,7 +417,7 @@ class _profilepageState extends State<profilepage> {
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/3.9,
                               )
-                              ,Text("Kannur")
+                              ,Text(result[0]["district"])
                             ],
                           ),
                         ), Row(
@@ -447,7 +486,10 @@ class _profilepageState extends State<profilepage> {
                                 decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),color: const Color.fromARGB(255, 197, 148, 4),)
                           
-                          ,child: Center(child: Text("Add",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 18),)),
+                          ,child: InkWell(
+                           onTap:(){ Navigator.push(context,MaterialPageRoute(builder:(context) => FilePickerDemo(),));},
+                            
+                            child: Center(child: Text("Add",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 18),))),
                             ),
                           ),
                         )
@@ -509,5 +551,62 @@ class _profilepageState extends State<profilepage> {
         ),
       ),
     );
+    
   }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var result=[];
+  void StudentProfile1() async{
+
+    result =await Apiclass().StudentProfile() ;
+          print("hello");
+   print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg $result");
+   print(result.runtimeType);
+   print(result[0]["fname"]);
+    print("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo$personaldatas");
+    
+   setState(() {
+
+   
+  
+   
+  // Fname=result.fname.toString();
+  // Lname=result.lname.toString();
+  // Dob=result.dob.toString();
+  // Gender=result.gender.toString();
+  // Nati=result.nationality.toString();
+  // Bg=result.bldgrp.toString();
+  // Pob=result.pob.toString();
+  // Sob=result.sob.toString();
+  // Religion=result.religion.toString();
+  // Height=result.hight .toString();
+  // Weight=result.weight.toString();
+  // Mt=result.ml.toString();
+  // Caste=result.cast.toString();
+
+   });
+  }
+  
 }
