@@ -5,14 +5,63 @@ import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepag
 import 'package:google_fonts/google_fonts.dart';
 
 class basicinformation extends StatefulWidget {
-  const basicinformation({super.key});
+ var fname1;
+ var title1;
+ var lname1;
+ var dob1;
+ var gendor1;
+ var nati1;
+ var bldgrp1;
+ var pob1;
+ var sob1;
+ var reli1;
+ var hei1;
+ var wei1;
+ var motherl1;
+ var caste1;
+basicinformation({super.key ,required this.fname1,required this.title1,required this.lname1,required this.dob1
+,required this.gendor1,required this.nati1,required this.bldgrp1,required this.pob1,required this.sob1,required this.reli1
+,required this.hei1,required this.wei1,required this.motherl1,required this.caste1});
 
   @override
   State<basicinformation> createState() => _basicinformationState();
 }
 
 class _basicinformationState extends State<basicinformation> {
+  var titlecontroller=TextEditingController();
+  var fnamecontroller=TextEditingController();
+  var lnamecontroller=TextEditingController();
+  var dobcontroller=TextEditingController();
+  var gendercontroller=TextEditingController();
+  var natiocontroller=TextEditingController();
+  var bloodcontroller=TextEditingController();
+  var pobcontroller=TextEditingController();
+  var sobcontroller=TextEditingController();
+  var religioncontroller=TextEditingController();
+  var heicontroller=TextEditingController();
+  var weightcontroller=TextEditingController();
+  var mothertcontroller=TextEditingController();
+  var castecontroller=TextEditingController();
+  
   @override
+void initState() {
+    // TODO: implement initState
+    super.initState();
+    titlecontroller.text=widget.title1;
+    fnamecontroller.text=widget.fname1;
+    lnamecontroller.text=widget.lname1;
+    dobcontroller.text=widget.dob1;
+    gendercontroller.text=widget.gendor1;
+    natiocontroller.text=widget.nati1;
+    bloodcontroller.text=widget.bldgrp1;
+    pobcontroller.text=widget.pob1;
+    sobcontroller.text=widget.sob1;
+    heicontroller.text=widget.hei1;
+    weightcontroller.text=widget.wei1;
+    mothertcontroller.text=widget.motherl1;
+    castecontroller.text=widget.caste1;
+   print("llllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbggggggggggggggggnnnnnnnnnn$titlecontroller.text");
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 237, 234, 234),
@@ -85,8 +134,10 @@ class _basicinformationState extends State<basicinformation> {
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: titlecontroller,
                             decoration: InputDecoration(
-                              labelText: "Title:",
+                              labelText: titlecontroller.text,
+                              hintText: "Title",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -97,15 +148,19 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "First Name:",
+                              labelText:fnamecontroller.text ,
+                              hintText: "First Name",
+
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -116,13 +171,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Last Name:",
+                              labelText:lnamecontroller.text,
+                              hintText: "Last Name:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -135,15 +191,17 @@ class _basicinformationState extends State<basicinformation> {
                         ],
                       ),
                        Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "DOB:",
+                              labelText:dobcontroller.text ,
+                              hintText: "DOB:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -154,13 +212,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Gendor:",
+                              labelText:gendercontroller.text,
+                              hintText:  "Gender:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -173,6 +232,7 @@ class _basicinformationState extends State<basicinformation> {
                         ],
                       ),
                        Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
                         padding: const EdgeInsets.all(15.0),
@@ -181,7 +241,8 @@ class _basicinformationState extends State<basicinformation> {
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Nationality:",
+                              labelText: natiocontroller.text,
+                              hintText: "Nationality:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -192,13 +253,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Blood Group:",
+                              labelText:bloodcontroller.text ,
+                              hintText: "Blood Group:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -214,15 +276,17 @@ class _basicinformationState extends State<basicinformation> {
                         padding: const EdgeInsets.only(top: 15,left: 15,),
                         child: Text("Changes with administrater validation",style: TextStyle(color: Color.fromARGB(255, 96, 95, 95),fontWeight:FontWeight.w500),),
                       ), Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Place if Birth:",
+                              labelText: pobcontroller.text,
+                              hintText: "Place if Birth:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -233,13 +297,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "State of birth:",
+                              labelText:sobcontroller.text ,
+                              hintText: "State of birth:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -252,9 +317,10 @@ class _basicinformationState extends State<basicinformation> {
                         ],
                       ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
@@ -271,13 +337,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Height(in CMs):",
+                              labelText: heicontroller.text,
+                              hintText: "Height(in CMs):",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -290,15 +357,17 @@ class _basicinformationState extends State<basicinformation> {
                         ],
                       ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "weight(in KGs):",
+                              labelText: weightcontroller.text,
+                              hintText: "weight(in KGs):",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -309,13 +378,14 @@ class _basicinformationState extends State<basicinformation> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Blood Group:",
+                              labelText: mothertcontroller.text,
+                              hintText: "Mother L:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -334,7 +404,8 @@ class _basicinformationState extends State<basicinformation> {
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: "Caste:",
+                              labelText:castecontroller.text ,
+                              hintText: "Caste:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))

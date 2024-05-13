@@ -193,7 +193,7 @@ class _AssignmentUploadState extends State<AssignmentUpload> {
                     child: Text("before the deadline to avoid any penalties",style: TextStyle(color: Color.fromARGB(255, 109, 108, 108),fontSize: 13),),
                   ),
                    SizedBox(
-                  height: MediaQuery.of(context).size.height/3.7,
+                  height: MediaQuery.of(context).size.height/5,
                  ),
                    Container(
                     height: 1,

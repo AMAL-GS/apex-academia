@@ -3,5 +3,7 @@ class URL {
 
 String StudentLoginpageUrl="getandpostlog";
 String StudentProfileUrl="getandpostpi";
+String StudentCertUrl="getandpostcert";
+String StudentNoteUrl="getandpostsub";
 }
 

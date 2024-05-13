@@ -2,15 +2,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddressEdit extends StatefulWidget {
-  const AddressEdit({super.key});
+  var houses;
+  var city1;
+  var pin1;
+  var dis1;
+  
+ AddressEdit({super.key,required this.houses,required this.city1,required this.pin1,required this.dis1});
 
   @override
   State<AddressEdit> createState() => _AddressEditState();
 }
 
 class _AddressEditState extends State<AddressEdit> {
+  var housecontroller=TextEditingController();
+  var citycontroller=TextEditingController();
+  var pincontroller=TextEditingController();
+  var discontroller=TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    housecontroller.text=widget.houses;
+    citycontroller.text=widget.city1;
+    pincontroller.text=widget.pin1;
+    discontroller.text=widget.dis1;
+  }
+  var nameStudent;
+  Future<void>_loaddataa()async {
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      nameStudent=prefs.getString("nameofstudent");
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +63,7 @@ class _AddressEditState extends State<AddressEdit> {
         child: Column(
           children: [ 
              ListTile(
-              title:  Text("Amal",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16),)
+              title:  Text(nameStudent.toString(),style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16),)
                     
                    , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
                    trailing: CircleAvatar(
@@ -74,12 +101,18 @@ class _AddressEditState extends State<AddressEdit> {
                 child: SingleChildScrollView(
                   child: 
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    
+                    
                     children: [ 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
@@ -87,8 +120,10 @@ class _AddressEditState extends State<AddressEdit> {
                             keyboardType: TextInputType.multiline
                             ,minLines: 1,
                              maxLines: 4,
+                             controller: housecontroller,
                             decoration: InputDecoration(
-                              labelText: "House Name:",
+                              labelText: housecontroller.text,
+                              hintText: "House Name:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -99,13 +134,15 @@ class _AddressEditState extends State<AddressEdit> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: citycontroller,
                             decoration: InputDecoration(
-                              labelText: "City:",
+                              labelText: citycontroller.text,
+                              hintText: "City:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -118,15 +155,18 @@ class _AddressEditState extends State<AddressEdit> {
                         ],
                       ),  
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: pincontroller,
                             decoration: InputDecoration(
-                              labelText: "Pin Code:",
+                              labelText: pincontroller.text,
+                              hintText: "Pin Code:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -137,13 +177,15 @@ class _AddressEditState extends State<AddressEdit> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: discontroller,
                             decoration: InputDecoration(
-                              labelText: "District:",
+                              labelText: discontroller.text,
+                              hintText: "District:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))

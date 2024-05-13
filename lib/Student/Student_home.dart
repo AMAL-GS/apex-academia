@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_apex_academia/Apis&URLs/API.dart';
 
 import 'package:flutter_apex_academia/Student/StudentAttendence.dart';
 import 'package:flutter_apex_academia/teacher/assignmentChecking.dart';
@@ -25,6 +26,7 @@ class _homepage1State extends State<homepage1> {
   bool isScrollingDown = false;
   void initState() {
     super.initState();
+    StudentNotess();
     _scrollViewController = new ScrollController();
     _scrollViewController.addListener(() {
       if (_scrollViewController.position.userScrollDirection ==
@@ -238,7 +240,7 @@ class _homepage1State extends State<homepage1> {
                                 children: [ 
                                   Text("Monthly Attendence",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width/5,
+                                    width: MediaQuery.of(context).size.width/6,
                                   ),
                                   Text("<",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
                                   Text(" sept 2022 "),
@@ -263,7 +265,7 @@ class _homepage1State extends State<homepage1> {
                               padding: const EdgeInsets.only(left: 15),
                               child: Container(
                                 width: MediaQuery.of(context).size.width/1.2,
-                                height: MediaQuery.of(context).size.height/2.8,
+                                height: MediaQuery.of(context).size.height/2.9,
                                 child: SfCartesianChart(series: <CartesianSeries>[
                                                     HistogramSeries<ChartData1, double>(
                                                     dataSource: histogramData,
@@ -447,8 +449,16 @@ class _homepage1State extends State<homepage1> {
       ),
     );
   }
+  var noteslist=[];
+  void StudentNotess()async{
+   noteslist=await Apiclass().StudentNotes() as List;
+   print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes$noteslist");
+  }
+  
+
 }
 class ChartData1 {
         ChartData1(this.y);
         final double y;
     }
+

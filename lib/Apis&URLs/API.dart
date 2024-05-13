@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Apis&URLs/Url.dart';
+import 'package:flutter_apex_academia/ModelClasses/StudentCertimodel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentLoginModel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentPersonalinfo.dart';
 import 'package:flutter_apex_academia/Student/Student_homepage.dart';
@@ -18,7 +19,7 @@ class Apiclass{
   Future<StudentLoginModel?>StudentLoginApi(FormData formData)async{
     try{
       final result=await dio.post(url.StudentLoginpageUrl,data: formData);
-     print("ffffffffffffffffffffffffffffffffffffffffffffffffffffffff$result");
+   
 
       return StudentLoginModel.fromJson(result.data);
 
@@ -37,7 +38,7 @@ class Apiclass{
     
     // Assuming the data is a list of items and you need the first one
     List<dynamic> data = result.data;
-    print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq $data");
+    
     return data;
    
     if (data.isNotEmpty) {
@@ -57,6 +58,18 @@ class Apiclass{
     // print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh$result");
     // return personalmodel.fromJson(result.data as Map) ;
   }
+  Future<List?>Studentcert() async{
+    final result=await dio.get(url.BaseUrl+ url.StudentCertUrl);
+    List<dynamic>data=result.data;
+    print("fffffffffffffffffffffffffffffffffffffffffffffffffffff$result");
+    return result.data;
+  }
+  Future<List?>StudentNotes() async{
+ final result=await dio.get(url.BaseUrl+url.StudentNoteUrl);
+  List<dynamic>data=result.data;
+  return result.data;
+  }
+  
   
 
 }

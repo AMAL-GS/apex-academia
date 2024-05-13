@@ -102,7 +102,7 @@ class _sAssignmentsubState extends State<sAssignmentsub> {
                               ),
                               Center(child: Text(Grade[index],style: TextStyle(color: colorsGrade[index]),)),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width/4.5,
+                                width: MediaQuery.of(context).size.width/5,
                                 
                               ),
                               Text(status[index],style: TextStyle(color: colorsStatus[index

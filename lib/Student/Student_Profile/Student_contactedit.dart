@@ -4,13 +4,27 @@ import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepag
 import 'package:google_fonts/google_fonts.dart';
 
 class ContactEdit extends StatefulWidget {
-  const ContactEdit({super.key});
+  var email1;
+  var phoneno1;
+  var secphone1;
+  ContactEdit({super.key,required this.email1, required this.phoneno1,required this.secphone1});
 
   @override
   State<ContactEdit> createState() => _ContactEditState();
 }
 
 class _ContactEditState extends State<ContactEdit> {
+  var emaillcontroller=TextEditingController();
+  var phone1controller=TextEditingController();
+  var secphone1controller=TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    
+    emaillcontroller.text=widget.email1;
+    phone1controller.text=widget.phoneno1;
+    secphone1controller.text=widget.secphone1;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,8 +96,10 @@ class _ContactEditState extends State<ContactEdit> {
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller:emaillcontroller ,
                             decoration: InputDecoration(
-                              labelText: "Email id:",
+                              labelText:emaillcontroller.text ,
+                              hintText: "Email id:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -94,15 +110,18 @@ class _ContactEditState extends State<ContactEdit> {
                         ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                              Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: phone1controller,
                             decoration: InputDecoration(
-                              labelText: "Phone No:",
+                              labelText: phone1controller.text,
+                              hintText: "Phone No:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))
@@ -113,13 +132,15 @@ class _ContactEditState extends State<ContactEdit> {
                         ),
                       ),
                          Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height/14,
                           width:MediaQuery.of(context).size.width/2.6,
                           child: TextField(
+                            controller: secphone1controller,
                             decoration: InputDecoration(
-                              labelText: "Secondary ph No:",
+                              labelText: secphone1controller.text,
+                              hintText:  "Secondary ph No:",
                               labelStyle: TextStyle(color: const Color.fromARGB(255, 95, 94, 94)),
                             border: OutlineInputBorder(borderSide: new BorderSide(color: Color.fromARGB(255, 71, 71, 71))),
                             focusedBorder: OutlineInputBorder(borderSide: new BorderSide(color: const Color.fromARGB(255, 79, 79, 79)))

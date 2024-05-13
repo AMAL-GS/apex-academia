@@ -7,6 +7,7 @@ import 'package:flutter_apex_academia/Student/Student_Profile/Student_basicinfo.
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_contactedit.dart';
 import 'package:flutter_apex_academia/Student/Student_cert.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class profilepage extends StatefulWidget {
   const profilepage({super.key});
@@ -20,15 +21,30 @@ class _profilepageState extends State<profilepage> {
 var personaldatas=[];
   List support=["Suggestion","About us"];
   List legal=["Terms and conditions","Logout"];
-  
+   var result=[];
   
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+     firstnameshare();
+
+   
    StudentProfile1();
+    
+     Studentcert();
   }
+   Future<void>firstnameshare() async{
+    print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn${finallist[0]["fname"]}");
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+       print("gggggggggggggggggggfffffffffffffffffffffffff${finallist[0]["fname"]}");
+      prefs.setString("nameofstudent",finallist[0]["fname"]);
+    
+    });
+   }
   
+  @override
   Widget build(BuildContext context) {
     
    
@@ -46,7 +62,7 @@ var personaldatas=[];
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [ 
            ListTile(
-            title:  Text("Amal",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16),)
+            title:  Text(finallist[0]["fname"],style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16),)
                   
                  , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
                  trailing: InkWell(
@@ -91,6 +107,7 @@ var personaldatas=[];
              padding: const EdgeInsets.only(left: 15,right: 15),
              child: Text("Last certified on:7/02/2024",style: TextStyle(color: const Color.fromARGB(255, 92, 91, 91),fontSize: 12),),
            ),
+
            Padding(
              padding: const EdgeInsets.only(left: 15,right: 15,top: 25,bottom: 15),
              child: Container(
@@ -114,18 +131,22 @@ var personaldatas=[];
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Title:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text(
-                                result[0]["title"]
+                              Text("Title:"),
+                             SizedBox(width:MediaQuery.of(context).size.width/3.5,),
+                              Text(
+                                //"ggggggggggggggggggggggggg"
+                                finallist[0]["title"]
                                 )
                             ],
                           ),
-                        ) , Padding(
+                        ) ,
+                        Padding(
                           padding: const EdgeInsets.all(15),
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("First Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text(
-                                result[0]["fname"]
+                                finallist[0]["fname"]
                                 )
                             ],
                           ),
@@ -136,7 +157,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Last Name:"),SizedBox(width:MediaQuery.of(context).size.width/5.6,),Text(
-                                result[0]["lname"]
+                               finallist[0]["lname"]
                                 )
                             ],
                           ),
@@ -147,7 +168,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("DOB:"),SizedBox(width:MediaQuery.of(context).size.width/3.4,),Text(
-                                result[0]["dob"]
+                                finallist[0]["dob"]
                                 )
                             ],
                           ),
@@ -157,7 +178,8 @@ var personaldatas=[];
                           child: Row(
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
-                              Text("Gender:"),SizedBox(width:MediaQuery.of(context).size.width/4.1,),Text("uuuuuuuuuu/")
+                              Text("Gender:"),SizedBox(width:MediaQuery.of(context).size.width/4.1,),
+                              Text("uuuuuuuuuu/")
                             ],
                           ),
                         ),
@@ -167,7 +189,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Nationality:"),SizedBox(width:MediaQuery.of(context).size.width/5.4,),Text(
-                                result[0]["nationality"]
+                                finallist[0]["nationality"]
                                 )
                             ],
                           ),
@@ -178,7 +200,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Blood Group:"),SizedBox(width:MediaQuery.of(context).size.width/6.2,),Text(
-                                result[0]["bldgrp"]
+                                finallist[0]["bldgrp"]
                                 )
                             ],
                           ),
@@ -189,7 +211,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Place of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.9,),Text(
-                                result[0]["pob"]
+                                finallist[0]["pob"]
                                 )
                             ],
                           ),
@@ -200,7 +222,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("State of Birth:"),SizedBox(width:MediaQuery.of(context).size.width/6.6,),Text(
-                                result[0]["sob"]
+                                finallist[0]["sob"]
                                 )
                             ],
                           ),
@@ -211,7 +233,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Religion:"),SizedBox(width:MediaQuery.of(context).size.width/4.2,),Text(
-                                result[0]["religion"]
+                               finallist[0]["religion"]
                                 )
                             ],
                           ),
@@ -222,7 +244,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Height(in CMs):"),SizedBox(width:MediaQuery.of(context).size.width/8.3,),Text(
-                                result[0]["hight"]
+                                finallist[0]["hight"]
                                 )
                             ],
                           ),
@@ -233,7 +255,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Weight(in KGs):"),SizedBox(width:MediaQuery.of(context).size.width/7.9,),Text(
-                                result[0]["weight"]
+                                finallist[0]["weight"]
                                 )
                             ],
                           ),
@@ -244,7 +266,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Mother Toungue:"),SizedBox(width:MediaQuery.of(context).size.width/9.6,),Text(
-                                result[0]["ml"]
+                                finallist[0]["ml"]
                                 )
                             ],
                           ),
@@ -255,7 +277,7 @@ var personaldatas=[];
                             mainAxisAlignment:MainAxisAlignment.start,
                             children: [ 
                               Text("Caste:"),SizedBox(width:MediaQuery.of(context).size.width/3.5,),Text(
-                                result[0]["cast"]
+                                finallist[0]["cast"]
                                 )
                             ],
                           ),
@@ -275,7 +297,9 @@ var personaldatas=[];
                             Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: InkWell(
-                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>basicinformation(),),);},
+                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>basicinformation(fname1: finallist[0]["fname"], title1:finallist[0]["title"], lname1:finallist[0]["lname"],
+                                 dob1:finallist[0]["dob"], gendor1:finallist[0]["gender"] , nati1:finallist[0]["nationality"],
+                                  bldgrp1: finallist[0]["bldgrp"], pob1: finallist[0]["pob"], sob1:finallist[0]["sob"], reli1: finallist[0]["religion"], hei1: finallist[0]["hight"], wei1:finallist[0]["weight"], motherl1:finallist[0]["ml"], caste1: finallist[0]["cast"]),),);},
                                 child: Container(
                                   
                                   height: MediaQuery.of(context).size.height/16
@@ -312,7 +336,9 @@ var personaldatas=[];
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/3.5,
                         )
-                        ,Text(result[0]["email"])
+                        ,Text(
+                          finallist[0]["email"]
+                          )
                       ],
                     ),
                   ),
@@ -324,7 +350,9 @@ var personaldatas=[];
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/4.6,
                         )
-                        ,Text(result[0]["phone"])
+                        ,Text(
+                          finallist[0]["phone"]
+                          )
                       ],
                     ),
                   )
@@ -337,7 +365,9 @@ var personaldatas=[];
                         ,SizedBox(
                           width: MediaQuery.of(context).size.width/25.9,
                         )
-                        ,Text(result[0]["sphone"])
+                        ,Text(
+                          finallist[0]["sphone"]
+                          )
                       ],
                     ),
                   ), Row(
@@ -351,7 +381,7 @@ var personaldatas=[];
                             Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: InkWell(
-                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>ContactEdit(),),);},
+                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>ContactEdit(email1: finallist[0]["email"], phoneno1: finallist[0]["phone"], secphone1: finallist[0]["sphone"]),),);},
                                 child: Container(
                                   
                                   height: MediaQuery.of(context).size.height/16
@@ -382,7 +412,7 @@ var personaldatas=[];
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/6.1,
                               )
-                              ,Text(result[0]["house"])
+                              ,Text(finallist[0]["house"])
                             ],
                           ),
                         ),
@@ -394,7 +424,7 @@ var personaldatas=[];
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/3.2,
                               )
-                              ,Text(result[0]["city"])
+                              ,Text(finallist[0]["city"])
                             ],
                           ),
                         ),
@@ -406,7 +436,7 @@ var personaldatas=[];
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/4.3,
                               )
-                              ,Text(result[0]["pin"])
+                              ,Text(finallist[0]["pin"])
                             ],
                           ),
                         ),Padding(
@@ -417,7 +447,7 @@ var personaldatas=[];
                               ,SizedBox(
                                 width: MediaQuery.of(context).size.width/3.9,
                               )
-                              ,Text(result[0]["district"])
+                              ,Text(finallist[0]["district"])
                             ],
                           ),
                         ), Row(
@@ -431,7 +461,7 @@ var personaldatas=[];
                             Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: InkWell(
-                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>AddressEdit(),),);},
+                                onTap:(){ Navigator.push(context, MaterialPageRoute(builder: (context) =>AddressEdit(houses: finallist[0]["house"], city1:finallist[0]["city"], pin1: finallist[0]["pin"], dis1: finallist[0]["district"]),),);},
                                 child: Container(
                                   
                                   height: MediaQuery.of(context).size.height/16
@@ -456,7 +486,14 @@ var personaldatas=[];
              padding: const EdgeInsets.only(left: 15,right: 15,),
              child: Container(child: ExpansionTile(title: Text("Achievements")) , decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(5)
                 ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),),
-           ),
+           )
+           ,
+
+
+
+
+
+           
              
            Padding(
              padding: const EdgeInsets.all(15),
@@ -471,7 +508,7 @@ var personaldatas=[];
                         ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Please add Certificates"),
+                    child: Text(certlist[0]["cert"].toString()),
                   ),Container(
                           height: 1,
                           color: Colors.grey,
@@ -498,17 +535,21 @@ var personaldatas=[];
 
              ],
              
-             
-             
              ) , decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(5)
                 ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),),
            ),
            Padding(
              padding: const EdgeInsets.all(15),
              child: Text("Support",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
-           )
-           ,ListView.builder(
-            itemCount: 2,
+           ),
+
+
+
+
+
+           
+          ListView.builder(
+            itemCount:support.length ,
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) {
@@ -528,7 +569,7 @@ var personaldatas=[];
              child: Text("Legal",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
            ),
            ListView.builder(
-            itemCount: 2,
+            itemCount: legal.length,
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) {
@@ -542,7 +583,8 @@ var personaldatas=[];
                   ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),
                ),
              );
-           },),
+           },)
+          ,
            SizedBox(
             height: MediaQuery.of(context).size.height/15,
            )
@@ -554,59 +596,30 @@ var personaldatas=[];
     
   }
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  var result=[];
+ var finallist=[];
   void StudentProfile1() async{
 
+  print("hello");
+
     result =await Apiclass().StudentProfile() ;
-          print("hello");
-   print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg $result");
-   print(result.runtimeType);
-   print(result[0]["fname"]);
-    print("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo$personaldatas");
+   
+          print("hellooooo");
+  //  print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg $result");
+setState(() {
+  finallist.addAll(result);
+});
+  //  print("ttttttttttttttddddddddddddddddddddddddfinallist $finallist");
+
     
-   setState(() {
-
    
-  
-   
-  // Fname=result.fname.toString();
-  // Lname=result.lname.toString();
-  // Dob=result.dob.toString();
-  // Gender=result.gender.toString();
-  // Nati=result.nationality.toString();
-  // Bg=result.bldgrp.toString();
-  // Pob=result.pob.toString();
-  // Sob=result.sob.toString();
-  // Religion=result.religion.toString();
-  // Height=result.hight .toString();
-  // Weight=result.weight.toString();
-  // Mt=result.ml.toString();
-  // Caste=result.cast.toString();
+  }
+  var certlist=[];
+  void Studentcert() async{
+    print("hhvashgadgjhb");
+    certlist=await Apiclass().Studentcert() as List;
+    // print("ggggggggggggggggggggggggggggggggggggggggggggghelooooooooooooooooooooo");
+    // print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh$certlist");
 
-   });
   }
   
 }

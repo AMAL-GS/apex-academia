@@ -24,7 +24,7 @@ class _loginState extends State<Studentlogin> {
   void toggleShowpassword(){
     
   }
-  @override
+
 
 
   @override
@@ -110,7 +110,7 @@ class _loginState extends State<Studentlogin> {
                    children: [
                     SizedBox(
                       height: 1,
-                      width: MediaQuery.of(context).size.width/1.48,
+                      width: MediaQuery.of(context).size.width/1.68,
                     ),
                      Padding(
                        padding: const EdgeInsets.only(right:10,top: 0,
@@ -181,7 +181,7 @@ class _loginState extends State<Studentlogin> {
         
      
           showSuccessMessage("succsessfully Logged");
-          Navigator.push(context,MaterialPageRoute(builder: (context) => homepage1(),));
+          Navigator.push(context,MaterialPageRoute(builder: (context) => homePage(),));
   
       } else {
         showErrorMessage("Login failed :)");
