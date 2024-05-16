@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Apis&URLs/Url.dart';
+import 'package:flutter_apex_academia/ModelClasses/ProfileimageModel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentCertimodel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentLoginModel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentPersonalinfo.dart';
@@ -61,15 +62,25 @@ class Apiclass{
   Future<List?>Studentcert() async{
     final result=await dio.get(url.BaseUrl+ url.StudentCertUrl);
     List<dynamic>data=result.data;
-    print("fffffffffffffffffffffffffffffffffffffffffffffffffffff$result");
+    // print("fffffffffffffffffffffffffffffffffffffffffffffffffffff$result");
     return result.data;
   }
   Future<List?>StudentNotes() async{
  final result=await dio.get(url.BaseUrl+url.StudentNoteUrl);
   List<dynamic>data=result.data;
+  // print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk$result");
   return result.data;
   }
   
+  Future<List?>SprofileImage() async{
   
+final result=await dio.get(url.BaseUrl+url.PRofileImageUrl);
+
+ final Map<String, dynamic> data = result.data;
+    final List<String> imageUrls = List<String>.from(data['image_urls']);
+    print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk$imageUrls");
+    return imageUrls;
+// return  profileimageModel.fromJson(result.data);
+  }
 
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class basicinformation extends StatefulWidget {
  var fname1;
@@ -42,6 +43,7 @@ class _basicinformationState extends State<basicinformation> {
   var weightcontroller=TextEditingController();
   var mothertcontroller=TextEditingController();
   var castecontroller=TextEditingController();
+  var propic3;
   
   @override
 void initState() {
@@ -61,6 +63,7 @@ void initState() {
     mothertcontroller.text=widget.motherl1;
     castecontroller.text=widget.caste1;
    print("llllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbggggggggggggggggnnnnnnnnnn$titlecontroller.text");
+   propicget3();
   }
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +94,8 @@ void initState() {
                    , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
                    trailing: CircleAvatar(
                     radius: 23,
-                    backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                    backgroundImage: NetworkImage(propic3)
+                    // AssetImage("asset/profilephoto.jpg"),
                    ),
              ),
              Padding(
@@ -488,4 +492,12 @@ void initState() {
       ),
     );
   }
+   Future <void> propicget3() async{
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      propic3=prefs.getString("propic1");
+  });
+  
+  }
+  
 }

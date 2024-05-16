@@ -96,7 +96,7 @@ class _Teacher_loginState extends State<Teacher_login> {
                    children: [
                     SizedBox(
                       height: 1,
-                      width: MediaQuery.of(context).size.width/1.48,
+                      width: MediaQuery.of(context).size.width/1.8,
                     ),
                      Padding(
                        padding: const EdgeInsets.only(right:10,top: 0,

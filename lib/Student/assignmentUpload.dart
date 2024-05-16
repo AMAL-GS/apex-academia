@@ -58,11 +58,11 @@ class _AssignmentUploadState extends State<AssignmentUpload> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [ 
                          Padding(
-                           padding: const EdgeInsets.only(left: 15,top: 7),
+                           padding: const EdgeInsets.only(left: 15,top: 0),
                            child: Text("Not Submitted",style: TextStyle(color: Color.fromARGB(255, 250, 41, 27),fontSize: 12),),
                          ) ,
                          Padding(
-                           padding: const EdgeInsets.only(left: 15),
+                           padding: const EdgeInsets.only(left: 15,top: 0),
                            child: Text("Science role in modern warfare",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
                          )
                         ],

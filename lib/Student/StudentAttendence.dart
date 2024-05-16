@@ -217,15 +217,16 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
+                            
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [ 
                                    CircleAvatar(
                                     backgroundColor:const Color.fromARGB(255, 61, 243, 33),
                                     radius: 15,
                                    ),
-                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width/50,
-                                   ),
+                                  //  SizedBox(
+                                  //   width: MediaQuery.of(context).size.width/50,
+                                  //  ),
                                    Text("Present"),
                                     SizedBox(
                                     width: MediaQuery.of(context).size.width/30,
@@ -234,9 +235,9 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                                     backgroundColor:Color.fromARGB(255, 211, 39, 9),
                                     radius: 15,
                                    ),
-                                    SizedBox(
-                                    width: MediaQuery.of(context).size.width/50,
-                                   ),
+                                  //   SizedBox(
+                                  //   width: MediaQuery.of(context).size.width/50,
+                                  //  ),
                                    Text("Absent"),
                                     SizedBox(
                                     width: MediaQuery.of(context).size.width/30,
@@ -249,9 +250,9 @@ class _StudentAttendenceState extends State<StudentAttendence> {
                                       backgroundColor: Colors.white,
                                     ),
                                    ),
-                                    SizedBox(
-                                    width: MediaQuery.of(context).size.width/50,
-                                   ),
+                                  //   SizedBox(
+                                  //   width: MediaQuery.of(context).size.width/50,
+                                  //  ),
                                    Text("""Holidays/
 Week off"""),
 
@@ -352,7 +353,7 @@ Week off"""),
                         padding:
                             const EdgeInsets.only(top: 15, right: 10, left: 10),
                         child: Container(
-                          height: MediaQuery.of(context).size.height / 2.5,
+                          height: MediaQuery.of(context).size.height / 2.2,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               boxShadow: [
@@ -366,7 +367,9 @@ Week off"""),
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                top: 10, left: 15, right: 8, bottom: 8),
+                                top: 10, 
+                                // left: 15,
+                                 right: 8, bottom: 8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -453,9 +456,9 @@ Week off"""),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
+                                    // SizedBox(
+                                    //   width: 10,
+                                    // ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(

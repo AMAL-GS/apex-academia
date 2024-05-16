@@ -248,7 +248,8 @@ class _Teacher_homeState extends State<Teacher_home> {
                                 children: [ 
                                   Text("Monthly Attendence",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width/5,
+                                    width: MediaQuery.of(context).size.width/6
+                                    ,
                                   ),
                                   Text("<",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
                                   Text(" sept 2022 "),
@@ -273,7 +274,7 @@ class _Teacher_homeState extends State<Teacher_home> {
                               padding: const EdgeInsets.only(left: 15),
                               child: Container(
                                 width: MediaQuery.of(context).size.width/1.2,
-                                height: MediaQuery.of(context).size.height/2.8,
+                                height: MediaQuery.of(context).size.height/2.9,
                                 child: SfCartesianChart(series: <CartesianSeries>[
                                                     HistogramSeries<ChartData1, double>(
                                                     dataSource: histogramData,

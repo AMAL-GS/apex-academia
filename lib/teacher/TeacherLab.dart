@@ -88,10 +88,17 @@ String formattedDate = DateFormat('yyyy-MM-dd ').format(dateTime1);
                        SizedBox(
                          width: MediaQuery.of(context).size.width/10,
                        ),
-                       Text("Amal",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),)
-                        ,SizedBox(
-                         width: MediaQuery.of(context).size.width/3,
-                       ),
+                       Container(
+                       height: MediaQuery.of(context).size.height/15,
+                       width: MediaQuery.of(context).size.width/2.5,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: Text("Amal",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17,overflow: TextOverflow.ellipsis),),
+                        ))
+                        ,
+                      // SizedBox(
+                      //    width: MediaQuery.of(context).size.width/3,
+                      //  ),
                        CircleAvatar(
                          backgroundColor: Colors.black,
                           radius: 19,
@@ -102,7 +109,8 @@ String formattedDate = DateFormat('yyyy-MM-dd ').format(dateTime1);
                          ),
                        ), SizedBox(
                          width: MediaQuery.of(context).size.width/25,
-                       ),
+                       )
+                       ,
                             
                        Container(
                          width: 1,
@@ -111,15 +119,18 @@ String formattedDate = DateFormat('yyyy-MM-dd ').format(dateTime1);
                        ), SizedBox(
                          width: MediaQuery.of(context).size.width/25,
                        ),
-                        CircleAvatar(
-                         backgroundColor: Colors.black,
-                         radius: 19,
-                         child: CircleAvatar(
-                               radius: 18,
-                               backgroundColor: Colors.white,
-                               child: Text("A"),
-                         ),
-                       )
+                        Padding(
+                          padding: const EdgeInsets.only(right: 5),
+                          child: CircleAvatar(
+                           backgroundColor: Colors.black,
+                           radius: 19,
+                           child: CircleAvatar(
+                                 radius: 18,
+                                 backgroundColor: Colors.white,
+                                 child: Text("A"),
+                           ),
+                                                 ),
+                        )
                      ],
                     ),
                    ),

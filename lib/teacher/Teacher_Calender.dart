@@ -92,7 +92,7 @@ class _Teacher_eventsState extends State<Teacher_events> {
                           ),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width / 3.5,
                         ),
                         IconButton(
                             onPressed: () {

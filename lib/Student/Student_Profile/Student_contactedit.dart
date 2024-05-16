@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ContactEdit extends StatefulWidget {
   var email1;
@@ -17,6 +18,7 @@ class _ContactEditState extends State<ContactEdit> {
   var emaillcontroller=TextEditingController();
   var phone1controller=TextEditingController();
   var secphone1controller=TextEditingController();
+  var propic2;
   @override
   void initState() {
     // TODO: implement initState
@@ -24,6 +26,7 @@ class _ContactEditState extends State<ContactEdit> {
     emaillcontroller.text=widget.email1;
     phone1controller.text=widget.phoneno1;
     secphone1controller.text=widget.secphone1;
+    propicget();
   }
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,8 @@ class _ContactEditState extends State<ContactEdit> {
                    , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
                    trailing: CircleAvatar(
                     radius: 23,
-                    backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                    backgroundImage: NetworkImage(propic2)
+                    // AssetImage("asset/profilephoto.jpg"),
                    ),
              ),
                Padding(
@@ -207,5 +211,11 @@ class _ContactEditState extends State<ContactEdit> {
       ),
 
     );
+  }
+  Future <void> propicget() async{
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      propic2=prefs.getString("propic1");
+  });
   }
 }

@@ -22,6 +22,7 @@ var personaldatas=[];
   List support=["Suggestion","About us"];
   List legal=["Terms and conditions","Logout"];
    var result=[];
+   var propic;
   
   @override
   void initState() {
@@ -35,13 +36,7 @@ var personaldatas=[];
      Studentcert();
   }
    Future<void>firstnameshare() async{
-    print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn${finallist[0]["fname"]}");
-    SharedPreferences prefs=await SharedPreferences.getInstance();
-    setState(() {
-       print("gggggggggggggggggggfffffffffffffffffffffffff${finallist[0]["fname"]}");
-      prefs.setString("nameofstudent",finallist[0]["fname"]);
-    
-    });
+   
    }
   
   @override
@@ -71,7 +66,9 @@ var personaldatas=[];
                   },
                    child: CircleAvatar(
                     radius: 23,
-                    backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                    backgroundImage:
+                    NetworkImage(propic)
+                    //  AssetImage("asset/profilephoto.jpg"),
                    ),
                  ),
            ),
@@ -619,7 +616,17 @@ setState(() {
     certlist=await Apiclass().Studentcert() as List;
     // print("ggggggggggggggggggggggggggggggggggggggggggggghelooooooooooooooooooooo");
     // print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh$certlist");
-
+ SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      propic=prefs.getString("propic1");
+    });
+     print("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn${finallist[0]["fname"]}");
+    SharedPreferences prefs1=await SharedPreferences.getInstance();
+    setState(() {
+       print("gggggggggggggggggggfffffffffffffffffffffffff${finallist[0]["fname"]}");
+      prefs1.setString("nameofstudent",finallist[0]["fname"]);
+    
+    });
   }
   
 }

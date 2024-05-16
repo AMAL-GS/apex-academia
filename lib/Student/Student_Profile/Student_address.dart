@@ -21,6 +21,7 @@ class _AddressEditState extends State<AddressEdit> {
   var citycontroller=TextEditingController();
   var pincontroller=TextEditingController();
   var discontroller=TextEditingController();
+  var propic4;
   @override
   void initState() {
     // TODO: implement initState
@@ -29,6 +30,7 @@ class _AddressEditState extends State<AddressEdit> {
     citycontroller.text=widget.city1;
     pincontroller.text=widget.pin1;
     discontroller.text=widget.dis1;
+    propicget4();
   }
   var nameStudent;
   Future<void>_loaddataa()async {
@@ -68,7 +70,9 @@ class _AddressEditState extends State<AddressEdit> {
                    , subtitle:Text("amalgs6282@gmail.com",style: TextStyle(fontSize: 14),),
                    trailing: CircleAvatar(
                     radius: 23,
-                    backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                    backgroundImage:
+                    NetworkImage(propic4)
+                    //  AssetImage("asset/profilephoto.jpg"),
                    ),
              ),
                Padding(
@@ -253,5 +257,11 @@ class _AddressEditState extends State<AddressEdit> {
 
 
     ) ;
+  }
+   Future <void> propicget4() async{
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      propic4=prefs.getString("propic1");
+  });
   }
 }

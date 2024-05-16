@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_apex_academia/Apis&URLs/API.dart';
 
-import 'package:flutter_apex_academia/Student/StudentAttendence.dart';
-import 'package:flutter_apex_academia/teacher/assignmentChecking.dart';
+
+import 'package:flutter_apex_academia/Student/StudentNotes.dart';
+
 import 'package:flutter_apex_academia/Student/Student_notification.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_profilepage.dart';
-import 'package:flutter_apex_academia/teacher/searchpage.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class homepage1 extends StatefulWidget {
@@ -19,14 +22,19 @@ class homepage1 extends StatefulWidget {
 }
 
 class _homepage1State extends State<homepage1> {
-  @override
-  
+
   ScrollController _scrollViewController = ScrollController();
   bool _showAppbar = true;
   bool isScrollingDown = false;
+   
   void initState() {
     super.initState();
     StudentNotess();
+    profileImage1();
+    
+
+    
+    print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuiiiiiiiiiiiiiiiiiiiiiiiiiiiii${noteslist.length}");
     _scrollViewController = new ScrollController();
     _scrollViewController.addListener(() {
       if (_scrollViewController.position.userScrollDirection ==
@@ -51,11 +59,10 @@ class _homepage1State extends State<homepage1> {
   List<String>dailylearningpics=["asset/mathsproject.jpg","asset/physiscsproject.jpeg",
   "asset/teacherproject.jpeg","asset/teacherproject1.jpeg","asset/teacherproject2.jpg",
   "asset/teacherproject3.jpeg","asset/teacherproject4.jpeg","asset/teacherproject5.jpeg",
-  "asset/teacherproject7.jpg","asset/teacherproject8.jpeg"
+  "asset/teacherproject7.jpg","asset/teacherproject8.jpeg","asset/teacherproject11.jpeg"
 
   ];
-  List<String>subjectnames=["English","Malayalam","Science","Maths","Physiscs","Social","Chemistry",
-  "Computer","Hindi","Biology"];
+  
   
   @override
   Widget build(BuildContext context) {
@@ -161,6 +168,7 @@ class _homepage1State extends State<homepage1> {
         ChartData1(95.750),
         ChartData1(95.250)
         ];
+       
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 249, 247, 247),
       body: SafeArea(
@@ -199,7 +207,9 @@ class _homepage1State extends State<homepage1> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => profilepage()));
                     },
                     child: CircleAvatar(
-                      backgroundImage: AssetImage("asset/profilephoto.jpg"),
+                      backgroundImage:
+                      NetworkImage(imagelist2[0]),
+                     // AssetImage("asset/profilephoto.jpg"),
                       radius: 25,
                     ),
                   ),
@@ -390,7 +400,7 @@ class _homepage1State extends State<homepage1> {
                       shrinkWrap: true,
                                      
                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
+                        itemCount: noteslist.length,
                         itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(left: 10,),
@@ -399,42 +409,46 @@ class _homepage1State extends State<homepage1> {
                             width: MediaQuery.of(context).size.width/3.1,
                             child: SizedBox(
                                             
-                              child: Card(
-                                color: Colors.black,
-                                 child: Stack(
-                                  children: [ 
-                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(7),
-                                      child: SizedBox.fromSize(
-                                        size: Size.fromRadius(MediaQuery.of(context).size.width/3.1),
-                                        child: Image.asset(
-                                          dailylearningpics[index],
-                                          fit: BoxFit.cover,
-                                          
+                              child: InkWell(
+                                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => StudentNotes11(subjectnames1:noteslist[index]["subject"] , subjectnotestext: noteslist[index]["notes"]),));},
+                              
+                                child: Card(
+                                  color: Colors.black,
+                                   child: Stack(
+                                    children: [ 
+                                       ClipRRect(
+                                        borderRadius: BorderRadius.circular(7),
+                                        child: SizedBox.fromSize(
+                                          size: Size.fromRadius(MediaQuery.of(context).size.width/3.1),
+                                          child: Image.asset(
+                                            dailylearningpics[index],
+                                            fit: BoxFit.cover,
+                                            
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                     height: MediaQuery.of(context).size.height/4.6,
-                                     width: MediaQuery.of(context).size.width/3.1
-                                     ,decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      gradient: LinearGradient(
-                                        begin: Alignment.center,
-                                        end: Alignment.bottomCenter,
-                                        stops: [
-                                          .3,
-                                          0.5
-                                        ],
-                                        colors:[Colors.black.withOpacity(0.1),Colors.black.withOpacity(0.6)])
-                                     ),
-                                    ),
-                                    Positioned(
-                                      bottom: 10,
-                                      left: MediaQuery.of(context).size.width/14,
-                                      child: Text(subjectnames[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),))
-                                  ],
-                                 ),
+                                      Container(
+                                       height: MediaQuery.of(context).size.height/4.6,
+                                       width: MediaQuery.of(context).size.width/3.1
+                                       ,decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        gradient: LinearGradient(
+                                          begin: Alignment.center,
+                                          end: Alignment.bottomCenter,
+                                          stops: [
+                                            .3,
+                                            0.5
+                                          ],
+                                          colors:[Colors.black.withOpacity(0.1),Colors.black.withOpacity(0.6)])
+                                       ),
+                                      ),
+                                      Positioned(
+                                        bottom: 10,
+                                        left: MediaQuery.of(context).size.width/19,
+                                        child: Text(noteslist[index]["subject"],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),))
+                                    ],
+                                   ),
+                                ),
                               ),
                             )),
                         );
@@ -452,10 +466,23 @@ class _homepage1State extends State<homepage1> {
   var noteslist=[];
   void StudentNotess()async{
    noteslist=await Apiclass().StudentNotes() as List;
-   print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes$noteslist");
+  //  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes$noteslist");
   }
   
-
+ var imagelist;
+ var imagelist2=[];
+ void profileImage1() async{
+  print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzhello");
+  imagelist= await Apiclass().SprofileImage() ;
+  
+   print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes${imagelist[0]}");
+   setState(() {
+     imagelist2.addAll(imagelist);
+     print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggv$imagelist2");
+   });
+   SharedPreferences prefs=await SharedPreferences.getInstance();
+   prefs.setString("propic1",imagelist2[0]);
+ }
 }
 class ChartData1 {
         ChartData1(this.y);
