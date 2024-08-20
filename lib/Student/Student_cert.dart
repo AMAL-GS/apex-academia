@@ -1,10 +1,8 @@
-        import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class FilePickerDemo extends StatefulWidget {
   const FilePickerDemo({super.key});
-
-  
 
   @override
   State<FilePickerDemo> createState() => _FilePickerDemoState();
@@ -34,29 +32,35 @@ class _FilePickerDemoState extends State<FilePickerDemo> {
                     children: [
                       const Text(
                         'Selected file:',
-                        style:
-                            TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: result?.files.length ?? 0,
-                          itemBuilder: (context, index) {
-                            return Text(result?.files[index].name ?? '',
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold));
-                          }, separatorBuilder: (BuildContext context, int index) { 
-                            return const SizedBox(height: 5,);
-                           },)
+                        shrinkWrap: true,
+                        itemCount: result?.files.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return Text(result?.files[index].name ?? '',
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold));
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(
+                            height: 5,
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
-                const Spacer(),
+              const Spacer(),
               Center(
                 child: ElevatedButton(
                   onPressed: () async {
-                    result =
-                        await FilePicker.platform.pickFiles(allowMultiple: true);
+                    result = await FilePicker.platform
+                        .pickFiles(allowMultiple: true);
                     if (result == null) {
                       print("No file selected");
                     } else {

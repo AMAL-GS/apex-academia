@@ -275,7 +275,7 @@ class _Teacher_eventsState extends State<Teacher_events> {
 
                                         // Styling text
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         color: Colors.black),
                                         
                                   ),
@@ -290,7 +290,7 @@ class _Teacher_eventsState extends State<Teacher_events> {
 
                                         // Styling text
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 17,
+                                        fontSize: 15,
                                         color:
                                             Color.fromARGB(255, 168, 140, 56)),
                                   )
@@ -302,7 +302,7 @@ class _Teacher_eventsState extends State<Teacher_events> {
                             ),
                             Container(
                                 height: MediaQuery.of(context).size.height / 13,
-                                width: MediaQuery.of(context).size.width / 1.4,
+                                width: MediaQuery.of(context).size.width / 1.5,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(7)),

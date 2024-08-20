@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/SelectionPage.dart';
+import 'package:flutter_apex_academia/Student/Student_home.dart';
+import 'package:flutter_apex_academia/Student/Student_homepage.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() {
@@ -29,10 +32,14 @@ class homescreen extends StatefulWidget {
 
 class _homescreenState extends State<homescreen> {
   @override
-  void initState() {
+  void initState()  {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds:5), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>SelectionPage()));});
+   logingetusersplash();
+  
+   
+
+    // Timer(Duration(seconds:5), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>SelectionPage()));});
   }
   @override
   Widget build(BuildContext context) {
@@ -44,4 +51,17 @@ class _homescreenState extends State<homescreen> {
       )),
     );
   }
+   var username3;
+ Future <void> logingetusersplash() async{
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    setState(() {
+      username3=prefs.getString("Username1");
+      print("7777777777777777777777777777777777777777777777777777777777777777$username3");
+       if(username3 != null){
+     Timer(Duration(seconds:2), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>homePage()));});  
+    }
+    else{
+       Timer(Duration(seconds:5), () { Navigator.push(context, MaterialPageRoute(builder:(context)=>SelectionPage()));});
+    }
+  });}
 }

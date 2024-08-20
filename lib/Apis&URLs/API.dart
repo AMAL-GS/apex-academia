@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_apex_academia/Apis&URLs/Url.dart';
 import 'package:flutter_apex_academia/ModelClasses/ProfileimageModel.dart';
+import 'package:flutter_apex_academia/ModelClasses/StAssignmentmodel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentCertimodel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentLoginModel.dart';
 import 'package:flutter_apex_academia/ModelClasses/StudentPersonalinfo.dart';
@@ -62,13 +63,13 @@ class Apiclass{
   Future<List?>Studentcert() async{
     final result=await dio.get(url.BaseUrl+ url.StudentCertUrl);
     List<dynamic>data=result.data;
-    // print("fffffffffffffffffffffffffffffffffffffffffffffffffffff$result");
+    
     return result.data;
   }
   Future<List?>StudentNotes() async{
  final result=await dio.get(url.BaseUrl+url.StudentNoteUrl);
   List<dynamic>data=result.data;
-  // print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk$result");
+  
   return result.data;
   }
   
@@ -78,9 +79,22 @@ final result=await dio.get(url.BaseUrl+url.PRofileImageUrl);
 
  final Map<String, dynamic> data = result.data;
     final List<String> imageUrls = List<String>.from(data['image_urls']);
-    print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk$imageUrls");
+    
     return imageUrls;
-// return  profileimageModel.fromJson(result.data);
+
+  }
+  Future<List<SubjectAssignments>> fetchAssignments() async {
+    try {
+      final response = await dio.get(url.BaseUrl+url.StAssignmentUrl);
+      if (response.statusCode == 200) {
+        List<dynamic> data = response.data;
+        return data.map((json) => SubjectAssignments.fromJson(json)).toList();
+      } else {
+        throw Exception('Failed to load assignments');
+      }
+    } catch (e) {
+      throw Exception('Failed to load assignments: $e');
+    }
   }
 
 }

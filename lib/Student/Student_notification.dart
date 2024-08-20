@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apex_academia/Student/Demostudent_Assignment.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -121,6 +122,15 @@ class _NotificationPageState extends State<NotificationPage> {
                 
               );
             },),
+            ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => DEmoAssignmentPage(),));}, child:
+            Container(
+              height: 50,
+              width: 50,
+              child: Center(
+                child: Text("test"),
+              ),
+            )
+            )
           ],
         ),
       ),

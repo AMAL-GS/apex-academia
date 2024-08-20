@@ -10,6 +10,7 @@ import 'package:flutter_apex_academia/forgotpassword.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Studentlogin extends StatefulWidget {
   
@@ -203,7 +204,7 @@ class _loginState extends State<Studentlogin> {
     ).show(context);
   }
 
-  void showSuccessMessage(String message) {
+  void showSuccessMessage(String message) async {
     MotionToast.success(
       title: const Text(
         'Success',
@@ -218,5 +219,13 @@ class _loginState extends State<Studentlogin> {
       height: 80,
       dismissable: false,
     ).show(context);
+      SharedPreferences prefs1=await SharedPreferences.getInstance();
+    setState(() {
+     
+      prefs1.setString("Username1",Studentacademyidcontroller.text);
+    
+    });
+    
   }
+ 
 }

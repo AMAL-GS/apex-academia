@@ -6,6 +6,7 @@ import 'package:flutter_apex_academia/Student/Student_Profile/Student_address.da
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_basicinfo.dart';
 import 'package:flutter_apex_academia/Student/Student_Profile/Student_contactedit.dart';
 import 'package:flutter_apex_academia/Student/Student_cert.dart';
+import 'package:flutter_apex_academia/Student/Student_logout.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -565,23 +566,46 @@ var personaldatas=[];
              padding: const EdgeInsets.all(15),
              child: Text("Legal",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
            ),
-           ListView.builder(
-            itemCount: legal.length,
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-             return Padding(
+          //  ListView.builder(
+          //   itemCount: legal.length,
+          //   physics: NeverScrollableScrollPhysics(),
+          //   shrinkWrap: true,
+          //   itemBuilder: (context, index) {
+          //    return Padding(
+          //      padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
+          //      child: Container(
+          //        child: ListTile(
+          //         title: Text(legal[index]),
+          //        ),
+          //        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(5)
+          //         ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),
+          //      ),
+          //    );
+          //  },)
+           Padding(
                padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
                child: Container(
                  child: ListTile(
-                  title: Text(legal[index]),
+                  title: Text("Terms and conditions"),
                  ),
                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(5)
                   ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),
                ),
-             );
-           },)
-          ,
+             )
+             ,
+              Padding(
+               padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
+               child: InkWell(
+                onTap:(){Navigator.push(context,MaterialPageRoute(builder: (context) => logout(),));},
+                 child: Container(
+                   child: ListTile(
+                    title: Text("Logout"),
+                   ),
+                   decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(5)
+                    ,boxShadow: [BoxShadow(color: Colors.grey,blurRadius: 1)]),
+                 ),
+               ),
+             ),
            SizedBox(
             height: MediaQuery.of(context).size.height/15,
            )

@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_apex_academia/Apis&URLs/API.dart';
-
+import 'package:flutter_apex_academia/ModelClasses/StAssignmentmodel.dart';
 
 import 'package:flutter_apex_academia/Student/StudentNotes.dart';
 
@@ -22,19 +21,19 @@ class homepage1 extends StatefulWidget {
 }
 
 class _homepage1State extends State<homepage1> {
-
   ScrollController _scrollViewController = ScrollController();
   bool _showAppbar = true;
   bool isScrollingDown = false;
-   
+
   void initState() {
     super.initState();
     StudentNotess();
     profileImage1();
-    
 
-    
-    print("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuiiiiiiiiiiiiiiiiiiiiiiiiiiiii${noteslist.length}");
+    logingetuser();
+
+    print(
+        "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuiiiiiiiiiiiiiiiiiiiiiiiiiiiii${noteslist.length}");
     _scrollViewController = new ScrollController();
     _scrollViewController.addListener(() {
       if (_scrollViewController.position.userScrollDirection ==
@@ -56,119 +55,127 @@ class _homepage1State extends State<homepage1> {
       }
     });
   }
-  List<String>dailylearningpics=["asset/mathsproject.jpg","asset/physiscsproject.jpeg",
-  "asset/teacherproject.jpeg","asset/teacherproject1.jpeg","asset/teacherproject2.jpg",
-  "asset/teacherproject3.jpeg","asset/teacherproject4.jpeg","asset/teacherproject5.jpeg",
-  "asset/teacherproject7.jpg","asset/teacherproject8.jpeg","asset/teacherproject11.jpeg"
 
+  List<String> dailylearningpics = [
+    "asset/mathsproject.jpg",
+    "asset/physiscsproject.jpeg",
+    "asset/teacherproject.jpeg",
+    "asset/teacherproject1.jpeg",
+    "asset/teacherproject2.jpg",
+    "asset/teacherproject3.jpeg",
+    "asset/teacherproject4.jpeg",
+    "asset/teacherproject5.jpeg",
+    "asset/teacherproject7.jpg",
+    "asset/teacherproject8.jpeg",
+    "asset/teacherproject11.jpeg"
   ];
-  
-  
+
   @override
   Widget build(BuildContext context) {
+    final Apiclass apiService = Apiclass();
     final List<ChartData1> histogramData = <ChartData1>[
-        ChartData1(5.250),
-        ChartData1(7.750),
-        ChartData1(0.0),
-        ChartData1(8.275),
-        ChartData1(9.750),
-        ChartData1(7.750),
-        ChartData1(8.275),
-        ChartData1(6.250),
-        ChartData1(5.750),
-        ChartData1(5.250),
-        ChartData1(23.000),
-        ChartData1(26.500),
-        ChartData1(26.500),
-        ChartData1(27.750),
-        ChartData1(25.025),
-        ChartData1(26.500),
-        ChartData1(28.025),
-        ChartData1(29.250),
-        ChartData1(26.750),
-        ChartData1(27.250),
-        ChartData1(26.250),
-        ChartData1(25.250),
-        ChartData1(34.500),
-        ChartData1(25.625),
-        ChartData1(25.500),
-        ChartData1(26.625),
-        ChartData1(36.275),
-        ChartData1(36.250),
-        ChartData1(26.875),
-        ChartData1(40.000),
-        ChartData1(43.000),
-        ChartData1(46.500),
-        ChartData1(47.750),
-        ChartData1(45.025),
-        ChartData1(56.500),
-        ChartData1(56.500),
-        ChartData1(58.025),
-        ChartData1(59.250),
-        ChartData1(56.750),
-        ChartData1(57.250),
-        ChartData1(46.250),
-        ChartData1(55.250),
-        ChartData1(44.500),
-        ChartData1(45.525),
-        ChartData1(55.500),
-        ChartData1(46.625),
-        ChartData1(46.275),
-        ChartData1(56.250),
-        ChartData1(46.875),
-        ChartData1(43.000),
-        ChartData1(46.250),
-        ChartData1(55.250),
-        ChartData1(44.500),
-        ChartData1(45.425),
-        ChartData1(55.500),
-        ChartData1(56.625),
-        ChartData1(46.275),
-        ChartData1(56.250),
-        ChartData1(46.875),
-        ChartData1(43.000),
-        ChartData1(46.250),
-        ChartData1(55.250),
-        ChartData1(44.500),
-        ChartData1(45.425),
-        ChartData1(55.500),
-        ChartData1(46.625),
-        ChartData1(56.275),
-        ChartData1(46.250),
-        ChartData1(56.875),
-        ChartData1(41.000),
-        ChartData1(63.000),
-        ChartData1(66.500),
-        ChartData1(67.750),
-        ChartData1(65.025),
-        ChartData1(66.500),
-        ChartData1(76.500),
-        ChartData1(78.025),
-        ChartData1(79.250),
-        ChartData1(76.750),
-        ChartData1(77.250),
-        ChartData1(66.250),
-        ChartData1(75.250),
-        ChartData1(74.500),
-        ChartData1(65.625),
-        ChartData1(75.500),
-        ChartData1(76.625),
-        ChartData1(76.275),
-        ChartData1(66.250),
-        ChartData1(66.875),
-        ChartData1(80.000),
-        ChartData1(85.250),
-        ChartData1(87.750),
-        ChartData1(89.000),
-        ChartData1(88.275),
-        ChartData1(89.750),
-        ChartData1(97.750),
-        ChartData1(98.275),
-        ChartData1(96.250),
-        ChartData1(95.750),
-        ChartData1(95.250)
-        ];
-       
+      ChartData1(5.250),
+      ChartData1(7.750),
+      ChartData1(0.0),
+      ChartData1(8.275),
+      ChartData1(9.750),
+      ChartData1(7.750),
+      ChartData1(8.275),
+      ChartData1(6.250),
+      ChartData1(5.750),
+      ChartData1(5.250),
+      ChartData1(23.000),
+      ChartData1(26.500),
+      ChartData1(26.500),
+      ChartData1(27.750),
+      ChartData1(25.025),
+      ChartData1(26.500),
+      ChartData1(28.025),
+      ChartData1(29.250),
+      ChartData1(26.750),
+      ChartData1(27.250),
+      ChartData1(26.250),
+      ChartData1(25.250),
+      ChartData1(34.500),
+      ChartData1(25.625),
+      ChartData1(25.500),
+      ChartData1(26.625),
+      ChartData1(36.275),
+      ChartData1(36.250),
+      ChartData1(26.875),
+      ChartData1(40.000),
+      ChartData1(43.000),
+      ChartData1(46.500),
+      ChartData1(47.750),
+      ChartData1(45.025),
+      ChartData1(56.500),
+      ChartData1(56.500),
+      ChartData1(58.025),
+      ChartData1(59.250),
+      ChartData1(56.750),
+      ChartData1(57.250),
+      ChartData1(46.250),
+      ChartData1(55.250),
+      ChartData1(44.500),
+      ChartData1(45.525),
+      ChartData1(55.500),
+      ChartData1(46.625),
+      ChartData1(46.275),
+      ChartData1(56.250),
+      ChartData1(46.875),
+      ChartData1(43.000),
+      ChartData1(46.250),
+      ChartData1(55.250),
+      ChartData1(44.500),
+      ChartData1(45.425),
+      ChartData1(55.500),
+      ChartData1(56.625),
+      ChartData1(46.275),
+      ChartData1(56.250),
+      ChartData1(46.875),
+      ChartData1(43.000),
+      ChartData1(46.250),
+      ChartData1(55.250),
+      ChartData1(44.500),
+      ChartData1(45.425),
+      ChartData1(55.500),
+      ChartData1(46.625),
+      ChartData1(56.275),
+      ChartData1(46.250),
+      ChartData1(56.875),
+      ChartData1(41.000),
+      ChartData1(63.000),
+      ChartData1(66.500),
+      ChartData1(67.750),
+      ChartData1(65.025),
+      ChartData1(66.500),
+      ChartData1(76.500),
+      ChartData1(78.025),
+      ChartData1(79.250),
+      ChartData1(76.750),
+      ChartData1(77.250),
+      ChartData1(66.250),
+      ChartData1(75.250),
+      ChartData1(74.500),
+      ChartData1(65.625),
+      ChartData1(75.500),
+      ChartData1(76.625),
+      ChartData1(76.275),
+      ChartData1(66.250),
+      ChartData1(66.875),
+      ChartData1(80.000),
+      ChartData1(85.250),
+      ChartData1(87.750),
+      ChartData1(89.000),
+      ChartData1(88.275),
+      ChartData1(89.750),
+      ChartData1(97.750),
+      ChartData1(98.275),
+      ChartData1(96.250),
+      ChartData1(95.750),
+      ChartData1(95.250)
+    ];
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 249, 247, 247),
       body: SafeArea(
@@ -190,26 +197,32 @@ class _homepage1State extends State<homepage1> {
                   //     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage(),));
                   //   },
                   //   child: Icon(Icons.search,size: 30,)),
-                 InkWell(child: 
-                   Icon(
-                    Icons.notifications_none_outlined,
-                    size: 37,
+                  InkWell(
+                    child: Icon(
+                      Icons.notifications_none_outlined,
+                      size: 37,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationPage(),
+                          ));
+                    },
                   ),
-                  onTap: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => NotificationPage(),));
-                  },
-                 ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 25,
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => profilepage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => profilepage()));
                     },
                     child: CircleAvatar(
-                      backgroundImage:
-                      NetworkImage(imagelist2[0]),
-                     // AssetImage("asset/profilephoto.jpg"),
+                      backgroundImage: NetworkImage(imagelist2[0]),
+                      // AssetImage("asset/profilephoto.jpg"),
                       radius: 25,
                     ),
                   ),
@@ -229,77 +242,106 @@ class _homepage1State extends State<homepage1> {
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Container(
-                        height: MediaQuery.of(context).size.height / 2,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color:Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 230, 229, 229),
-                                  spreadRadius: 0.2,
-                                  blurRadius: 1)
-                            ]),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15,top: 30),
-
-                              child: Row(
-                                children: [ 
-                                  Text("Monthly Attendence",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),),
+                          height: MediaQuery.of(context).size.height / 2,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromARGB(255, 230, 229, 229),
+                                    spreadRadius: 0.2,
+                                    blurRadius: 1)
+                              ]),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 15, top: 30),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Monthly Attendence",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18),
+                                    ),
+                                    //
+                                    Spacer(),
+                                    Text(
+                                      "<",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(" sept 2022 "),
+                                    Text(
+                                      ">",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width/6,
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.3,
                                   ),
-                                  Text("<",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
-                                  Text(" sept 2022 "),
-                                   Text(">",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),),
-                                ], 
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        Color.fromARGB(255, 128, 103, 31),
+                                    radius: 3,
+                                  ),
+                                  Text("  Avg no.",
+                                      style: TextStyle(fontSize: 10)),
+                                ],
                               ),
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(width: MediaQuery.of(context).size.width/1.3,),
-                                CircleAvatar(backgroundColor: Color.fromARGB(255, 128, 103, 31),
-                                radius: 3,),
-                                Text("  Avg no.",style: TextStyle(fontSize: 10)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height/20,
-                            ),
-                            
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height / 20,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width / 1.2,
+                                  height:
+                                      MediaQuery.of(context).size.height / 2.9,
+                                  child: SfCartesianChart(
+                                    series: <CartesianSeries>[
+                                      HistogramSeries<ChartData1, double>(
+                                          dataSource: histogramData,
+                                          showNormalDistributionCurve: true,
+                                          curveColor:
+                                              Color.fromARGB(255, 141, 116, 41),
+                                          binInterval: 20,
+                                          pointColorMapper: (datum, index) =>
+                                              Color.fromARGB(
+                                                  255, 246, 215, 131),
+                                          sortFieldValueMapper:
+                                              (datum, index) => ValueKey(20),
+                                          yValueMapper: (ChartData1 data, _) =>
+                                              data.y)
+                                    ],
+                                    backgroundColor: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
 
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width/1.2,
-                                height: MediaQuery.of(context).size.height/2.9,
-                                child: SfCartesianChart(series: <CartesianSeries>[
-                                                    HistogramSeries<ChartData1, double>(
-                                                    dataSource: histogramData,
-                                                    
-                                                    showNormalDistributionCurve: true,
-                                                    curveColor: Color.fromARGB(255, 141, 116, 41),
-                                                    binInterval: 20,
-                                                    pointColorMapper: (datum, index) => Color.fromARGB(255, 246, 215, 131),
-                                                    sortFieldValueMapper: (datum, index) => ValueKey(20),
-                                                    yValueMapper: (ChartData1 data, _) => data.y)]
-                                                    ,backgroundColor: Colors.white,
-                                                    
-                                                     ),
-                              ),
-                            ),
-                          ],
-                        )
-                  
-                        // Image(
-                        //   image: AssetImage("asset/graph.png"),
-                        //   fit: BoxFit.fill,
-                        // ),
-                      ),
+                          // Image(
+                          //   image: AssetImage("asset/graph.png"),
+                          //   fit: BoxFit.fill,
+                          // ),
+                          ),
                     ),
+
+//upcoming
+
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text(
@@ -310,149 +352,263 @@ class _homepage1State extends State<homepage1> {
                             fontWeight: FontWeight.w500),
                       ),
                     ),
-                    ListView.builder(
-                      itemCount: 3,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15,top: 8),
-                          child: Container(
-                            height: MediaQuery.of(context).size.height / 10,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromARGB(255, 218, 218, 218),
-                                      spreadRadius: 0.2,
-                                      blurRadius: 1)
-                                ]),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  top: MediaQuery.of(context).size.height / 70,
-                                  left: MediaQuery.of(context).size.width / 30,
-                                  child: SizedBox(
-                                    height:
-                                        MediaQuery.of(context).size.height / 15,
-                                    width:
-                                        MediaQuery.of(context).size.width / 6,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(3),
-                                      child: SizedBox.fromSize(
-                                        size: Size.fromRadius(30),
-                                        child: Image.asset(
-                                          "asset/glob1.webp",
-                                          fit: BoxFit.cover,
+                    FutureBuilder<List<SubjectAssignments>>(
+                      future: apiService.fetchAssignments(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(child: CircularProgressIndicator());
+                        } else if (snapshot.hasError) {
+                          return Center(
+                              child: Text('Error: ${snapshot.error}'));
+                        } else if (!snapshot.hasData ||
+                            snapshot.data!.isEmpty) {
+                          return Center(child: Text('No assignments found.'));
+                        } else {
+                          return ListView.builder(
+                            itemCount: snapshot.data!.length,
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              final subjectAssignments = snapshot.data![index];
+                              //
+                              return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: subjectAssignments.assignments
+                                      .map((assignment) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15, right: 15, top: 8),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                10,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Color.fromARGB(
+                                                      255, 218, 218, 218),
+                                                  spreadRadius: 0.2,
+                                                  blurRadius: 1)
+                                            ]),
+                                        child: Stack(
+                                          children: [
+                                            Positioned(
+                                              top: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  70,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  30,
+                                              child: SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    15,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    6,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(3),
+                                                  child: SizedBox.fromSize(
+                                                    size: Size.fromRadius(30),
+                                                    child: Image.asset(
+                                                      "asset/glob1.webp",
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                                top: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    80,
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    4.3,
+                                                child: Text(
+                                                  subjectAssignments.subject,
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 183, 138, 3),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                )),
+                                            Positioned(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    4.3,
+                                                top: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    27,
+                                                child: Text(
+                                                  assignment.uptitle,
+                                                  style:
+                                                      TextStyle(fontSize: 14),
+                                                )),
+                                            Positioned(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    4.3,
+                                                top: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    17,
+                                                child: Text(
+                                                  "Prepare for the section",
+                                                  style:
+                                                      TextStyle(fontSize: 11),
+                                                )),
+                                            Positioned(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.2,
+                                                top: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    29,
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_circle_right_outlined,
+                                                  color: const Color.fromARGB(
+                                                      255, 197, 148, 2),
+                                                  size: 30,
+                                                ))
+                                          ],
                                         ),
+                                      ),
+                                    );
+                                  }).toList());
+
+                             
+                            },
+                          );
+                        }
+                      },
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                        "Daily learning",
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                    ),
+                    
+                    Container(
+                      height: MediaQuery.of(context).size.height / 4.6,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: noteslist.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10,
+                            ),
+                            child: SizedBox(
+                                height: MediaQuery.of(context).size.height / 5,
+                                width: MediaQuery.of(context).size.width / 3.1,
+                                child: SizedBox(
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                StudentNotes11(
+                                                    subjectnames1:
+                                                        noteslist[index]
+                                                            ["subject"],
+                                                    subjectnotestext:
+                                                        noteslist[index]
+                                                            ["notes"]),
+                                          ));
+                                    },
+                                    child: Card(
+                                      color: Colors.black,
+                                      child: Stack(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                            child: SizedBox.fromSize(
+                                              size: Size.fromRadius(
+                                                  MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      3.1),
+                                              child: Image.asset(
+                                                dailylearningpics[index],
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                4.6,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3.1,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.center,
+                                                    end: Alignment.bottomCenter,
+                                                    stops: [
+                                                      .3,
+                                                      0.5
+                                                    ],
+                                                    colors: [
+                                                      Colors.black
+                                                          .withOpacity(0.1),
+                                                      Colors.black
+                                                          .withOpacity(0.6)
+                                                    ])),
+                                          ),
+                                          Positioned(
+                                              bottom: 10,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  19,
+                                              child: Text(
+                                                noteslist[index]["subject"],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ))
+                                        ],
                                       ),
                                     ),
                                   ),
-                                ),
-                                Positioned(
-                                    top:
-                                        MediaQuery.of(context).size.height / 80,
-                                    left:
-                                        MediaQuery.of(context).size.width / 4.3,
-                                    child: Text(
-                                      "Social",
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 183, 138, 3),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    )),
-                                Positioned(
-                                  left:
-                                        MediaQuery.of(context).size.width / 4.3,
-                                        top: MediaQuery.of(context).size.height/27,
-                                    child: Text(
-                                  "Case study project",
-                                  style: TextStyle(fontSize: 14),
                                 )),
-                                Positioned(
-                                   left:MediaQuery.of(context).size.width / 4.3,
-                                        top: MediaQuery.of(context).size.height/17,
-                                  child: Text("Prepare for the section",style: TextStyle(fontSize: 11),)),
-                                  Positioned(
-                                     left:
-                                        MediaQuery.of(context).size.width /  1.2,
-                                        top: MediaQuery.of(context).size.height/29,
-                                    child: Icon(Icons.arrow_circle_right_outlined,
-                                    color: const Color.fromARGB(255, 197, 148, 2),size: 30,))
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Text("Daily learning",style: TextStyle(fontSize: 18,color: Colors.black),),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height/4.6,
-                      
-                      
-                      child: ListView.builder(
-                      shrinkWrap: true,
-                                     
-                       scrollDirection: Axis.horizontal,
-                        itemCount: noteslist.length,
-                        itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10,),
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height/5,
-                            width: MediaQuery.of(context).size.width/3.1,
-                            child: SizedBox(
-                                            
-                              child: InkWell(
-                                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => StudentNotes11(subjectnames1:noteslist[index]["subject"] , subjectnotestext: noteslist[index]["notes"]),));},
-                              
-                                child: Card(
-                                  color: Colors.black,
-                                   child: Stack(
-                                    children: [ 
-                                       ClipRRect(
-                                        borderRadius: BorderRadius.circular(7),
-                                        child: SizedBox.fromSize(
-                                          size: Size.fromRadius(MediaQuery.of(context).size.width/3.1),
-                                          child: Image.asset(
-                                            dailylearningpics[index],
-                                            fit: BoxFit.cover,
-                                            
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                       height: MediaQuery.of(context).size.height/4.6,
-                                       width: MediaQuery.of(context).size.width/3.1
-                                       ,decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.center,
-                                          end: Alignment.bottomCenter,
-                                          stops: [
-                                            .3,
-                                            0.5
-                                          ],
-                                          colors:[Colors.black.withOpacity(0.1),Colors.black.withOpacity(0.6)])
-                                       ),
-                                      ),
-                                      Positioned(
-                                        bottom: 10,
-                                        left: MediaQuery.of(context).size.width/19,
-                                        child: Text(noteslist[index]["subject"],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),))
-                                    ],
-                                   ),
-                                ),
-                              ),
-                            )),
-                        );
-                      },),
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -463,29 +619,39 @@ class _homepage1State extends State<homepage1> {
       ),
     );
   }
-  var noteslist=[];
-  void StudentNotess()async{
-   noteslist=await Apiclass().StudentNotes() as List;
-  //  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes$noteslist");
-  }
-  
- var imagelist;
- var imagelist2=[];
- void profileImage1() async{
-  print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzhello");
-  imagelist= await Apiclass().SprofileImage() ;
-  
-   print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes${imagelist[0]}");
-   setState(() {
-     imagelist2.addAll(imagelist);
-     print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggv$imagelist2");
-   });
-   SharedPreferences prefs=await SharedPreferences.getInstance();
-   prefs.setString("propic1",imagelist2[0]);
- }
-}
-class ChartData1 {
-        ChartData1(this.y);
-        final double y;
-    }
 
+  var noteslist = [];
+  void StudentNotess() async {
+    noteslist = await Apiclass().StudentNotes() as List;
+    //  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes$noteslist");
+  }
+
+  var imagelist;
+  var imagelist2 = [];
+  void profileImage1() async {
+    // print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzhello");
+    imagelist = await Apiclass().SprofileImage();
+
+    //  print("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyynotes${imagelist[0]}");
+    setState(() {
+      imagelist2.addAll(imagelist);
+      //  print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggv$imagelist2");
+    });
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("propic1", imagelist2[0]);
+  }
+
+  var username2;
+  Future<void> logingetuser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username2 = prefs.getString("Username1");
+      // print("7777777777777777777777777777777777777777777777777777777777777777$username2");
+    });
+  }
+}
+
+class ChartData1 {
+  ChartData1(this.y);
+  final double y;
+}

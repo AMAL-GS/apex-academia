@@ -6,5 +6,6 @@ String StudentProfileUrl="getandpostpi";
 String StudentCertUrl="getandpostcert";
 String StudentNoteUrl="getandpostsub";
 String PRofileImageUrl="getandpostlogimage";
+String StAssignmentUrl="getandpostassign";
 }
 
